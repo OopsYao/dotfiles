@@ -9,3 +9,4 @@ Required dependencies:
 Required plugins:
 
 - [ranger-devicons2](https://github.com/cdump/ranger-devicons2)
+- [ranger-zjumper](https://github.com/ask1234560/ranger-zjumper)
