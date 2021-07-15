@@ -1,0 +1,35 @@
+# Hooks of tasks are exeuted in order
+tasks:
+  - file: ~/.config/nvim/init.vim
+    dark: colorscheme dracula
+    light: colorscheme onehalflight
+    comment-mark: '"'
+
+  - file: ~/.gtkrc-2.0
+    dark: gtk-theme-name="WhiteSur-dark-purple"
+    light: gtk-theme-name="WhiteSur-light-purple"
+
+  - file: ~/.config/gtk-3.0/settings.ini
+    dark: gtk-theme-name = WhiteSur-dark-puple
+    light: gtk-theme-name = WhiteSur-light-puple
+
+  - file: ~/.xsettingsd
+    dark: Net/ThemeName "WhiteSur-dark-purple"
+    light: Net/ThemeName "WhiteSur-light-purple"
+
+  - file: ~/.config/alacritty/alacritty.yml
+    dark: "colors: *dark"
+    light: "colors: *light"
+
+  - file: ~/.config/bat/config
+    dark: --theme="Dracula"
+    light: --theme="OneHalfLight"
+
+hooks:
+  - dark: touch ~/.DARK_MODE
+    light: rm -f ~/.DARK_MODE
+  - reload_xsettingsd.sh
+  - reload_gsettings.sh
+  - reload_nvim.sh
+  - dark: flavours apply dracula
+    light: flavours apply google-light
