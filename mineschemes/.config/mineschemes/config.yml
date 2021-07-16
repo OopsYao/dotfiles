@@ -19,7 +19,9 @@ tasks:
 
   - file: ~/.config/alacritty/alacritty.yml
     dark: "colors: *dark"
-    light: "colors: *light"
+    light: |-
+      colors: *light
+      background_opacity: 0.67
 
   - file: ~/.config/bat/config
     dark: --theme="Dracula"
