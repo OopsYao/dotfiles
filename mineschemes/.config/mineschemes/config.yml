@@ -10,8 +10,8 @@ tasks:
     light: gtk-theme-name="WhiteSur-light-purple"
 
   - file: ~/.config/gtk-3.0/settings.ini
-    dark: gtk-theme-name = WhiteSur-dark-puple
-    light: gtk-theme-name = WhiteSur-light-puple
+    dark: gtk-theme-name = WhiteSur-dark-purple
+    light: gtk-theme-name = WhiteSur-light-purple
 
   - file: ~/.xsettingsd
     dark: Net/ThemeName "WhiteSur-dark-purple"
