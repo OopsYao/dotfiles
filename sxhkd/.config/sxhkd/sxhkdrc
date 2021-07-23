@@ -1,0 +1,22 @@
+# PulseAudio (pactl)
+# from i3 config
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +10%
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -10%
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Brightness (brightnessctl)
+XF86MonBrightnessUp
+    brightnessctl set 20+
+XF86MonBrightnessDown
+    brightnessctl set 20-
+
+# Screenshot
+# from https://www.reddit.com/r/i3wm/comments/65vis5/screenshot_commands_from_my_i3_config/
+shift + Print
+    scrot -s 'screenshot_%Y%m%d_%H%M%S.png' \
+        -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
