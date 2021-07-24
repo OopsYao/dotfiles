@@ -10,3 +10,5 @@
 	defaultBranch = main
 [core]
     quotepath = false # Show unusual characters in file path
+[commit]
+    verbose = true
