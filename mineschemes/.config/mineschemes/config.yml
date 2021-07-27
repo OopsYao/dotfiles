@@ -19,9 +19,15 @@ tasks:
 
   - file: ~/.config/alacritty/alacritty.yml
     dark: "colors: *dark"
-    light: |-
-      colors: *light
-      background_opacity: 0.67
+    light: "colors: *light"
+
+  - file: ~/.config/flashfocus/flashfocus.yml
+    dark: |2-
+          default-opacity: 1
+          flash-opacity: 0.8
+    light: |2-
+          default-opacity: 0.8
+          flash-opacity: 0.64
 
   - file: ~/.config/bat/config
     dark: --theme="Dracula"
@@ -35,3 +41,4 @@ hooks:
   - reload_nvim.sh
   - dark: flavours apply dracula
     light: flavours apply google-light
+  - killall --signal USR1 flashfocus-wrapper
