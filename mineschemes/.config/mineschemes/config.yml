@@ -33,6 +33,11 @@ tasks:
     dark: --theme="Dracula"
     light: --theme="OneHalfLight"
 
+  - file: ~/.config/rofi/styles/simple-text.rasi
+    dark: '@import "colorschemes/cocoa.rasi"'
+    light: '@import "colorschemes/white.rasi"'
+    comment-mark: //
+
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE

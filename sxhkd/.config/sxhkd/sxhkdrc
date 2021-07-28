@@ -1,3 +1,5 @@
+# Send SIGUSR1 signal to reload config
+
 # PulseAudio (pactl)
 # from i3 config
 XF86AudioRaiseVolume
@@ -24,3 +26,8 @@ shift + Print
 # Flashfocus
 super + n
     flash_window
+
+# Rofi
+super + d
+    rofi -no-lazy-grab -show drun \
+        -modi run,drun,window
