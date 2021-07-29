@@ -1,0 +1,7 @@
+configuration {
+    lines: 4;
+}
+
+window {
+    width: 10%;
+}

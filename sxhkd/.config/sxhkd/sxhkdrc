@@ -35,3 +35,7 @@ super + d
 # Terminal
 super + Return
     alacritty
+
+# Powermenu
+super + p
+    powermenu.py
