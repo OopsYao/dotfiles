@@ -38,6 +38,11 @@ tasks:
     light: '@import "colorschemes/white.rasi"'
     comment-mark: //
 
+  - file: ~/.config/polybar/config
+    dark: include-file = ~/.config/polybar/dracula.ini
+    light: include-file = ~/.config/polybar/snow.ini
+    comment-mark: ;
+
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE

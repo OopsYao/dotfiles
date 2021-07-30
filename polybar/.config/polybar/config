@@ -1,0 +1,41 @@
+; vim: set ft=dosini:
+
+[colors]
+; Hot reload only works for this file (not working for included files)
+; START OOO
+include-file = ~/.config/polybar/dracula.ini
+; END OOO
+
+[settings]
+; Fallback value for modules
+format-background = ${colors.bg}
+
+[bar/main]
+; Function
+; Enable this to use ipc module,
+; and can restart polybar (`polybar-msg cmd restart`)
+; https://github.com/polybar/polybar/wiki/Inter-process-messaging
+enable-ipc = true
+override-redirect = true
+; This fixes fullscreen issue
+wm-restack = i3
+; Change cursor
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Font
+include-file = ~/.config/polybar/fonts.ini
+; Styling
+background = #00000000
+foreground = ${colors.fg}
+offset-y = 6
+height = 32
+padding = 6
+
+; Layout
+modules-left = left date sep xwindow right
+modules-center = left workspace right
+modules-right = left network sep battery sep powermenu right
+
+; Modules
+include-file = ~/.config/polybar/modules.ini
