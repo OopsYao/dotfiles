@@ -26,8 +26,8 @@ tasks:
           default-opacity: 1
           flash-opacity: 0.8
     light: |2-
-          default-opacity: 0.8
-          flash-opacity: 0.64
+          default-opacity: 0.7
+          flash-opacity: 0.56
 
   - file: ~/.config/bat/config
     dark: --theme="Dracula"
