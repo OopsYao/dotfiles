@@ -2,6 +2,7 @@
 import os
 import sys
 from easing_functions import CubicEaseInOut
+import time
 
 start = 1
 end = 0.2
@@ -15,6 +16,7 @@ brig_seq = reversed(dim_seq)
 def adjust(br_seq):
     for b in br_seq:
         os.system(f'xrandr --output "$PRIMARY_DISPLAY" --brightness {b:.2f}')
+        time.sleep(0.01)
 
 
 if len(sys.argv) > 1 and sys.argv[1] == 'brighten':
