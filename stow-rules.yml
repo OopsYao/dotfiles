@@ -6,3 +6,4 @@ rules:
   darkman: ~/.local/share # Means darkman: { .: ~/.local/share }
   ipython: ~/.ipython/profile_default
   xidlehook: ~/.local/bin
+  pymod: ~/.pymod
