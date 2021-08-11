@@ -1,9 +1,9 @@
 # Hooks of tasks are exeuted in order
 tasks:
-  - file: ~/.config/nvim/init.vim
-    dark: colorscheme dracula
-    light: colorscheme onehalflight
-    comment-mark: '"'
+  - file: ~/.config/nvim/init.lua
+    dark: vim.cmd 'colorscheme dracula'
+    light: vim.cmd 'colorscheme onehalflight'
+    comment-mark: --
 
   - file: ~/.config/gtk/config.yml
     dark: 'theme: WhiteSur-dark-green'
@@ -38,7 +38,6 @@ tasks:
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE
-  - reload_nvim.sh
   - reload_gtk_theme.py
   - dark: flavours apply dracula
     light: flavours apply google-light
