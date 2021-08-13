@@ -54,5 +54,13 @@ require 'plugins'
 -- Disable line number in terminal mode
 vim.cmd 'au TermOpen * setlocal nonumber norelativenumber'
 
--- Colorscheme
-vim.cmd 'colorscheme tokyonight'
+-- Colorscheme based on auto background setting event
+function colo(mode)
+    if (mode == 'light') then
+        vim.cmd 'colo tokyonight' -- light theme
+    else
+        vim.cmd 'colo tokyonight' -- dark theme
+    end
+end
+colo 'dark' -- Default. If the terminal is in default mode (dark), no event will be emitted.
+vim.cmd 'au OptionSet background :lua colo(vim.o.bg)'
