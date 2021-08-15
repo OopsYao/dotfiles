@@ -71,9 +71,13 @@ keymap {
 -- barbar.nvim
 keymap {
   { 'n', '<A-h>', ':BufferPrevious<CR>' },
+  { 't', '<A-h>', '<C-\\><C-n>:BufferPrevious<CR>' },
   { 'n', '<A-l>', ':BufferNext<CR>' },
+  { 't', '<A-l>', '<C-\\><C-n>:BufferNext<CR>' },
   { 'n', '<A-x>', ':BufferClose<CR>' },
+  { 't', '<A-x>', '<C-\\><C-n>:BufferClose<CR>' },
   { 'n', '<C-s>', ':BufferPick<CR>' }, -- Buffer-picking mode
+  { 't', '<C-s>', '<C-\\><C-n>:BufferPick<CR>' },
 }
 
 require'nvim_comment'.setup {}

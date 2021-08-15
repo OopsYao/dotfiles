@@ -41,10 +41,10 @@ seto {
   showmode = false,
 }
 
--- vim.api.nvim_set_keymap('n', '<esc>', ':noh<CR><esc>', { noremap = true, silent = true })
 keymap {
   -- Clear highlight
   { 'n', '<esc>', ':noh<CR><esc>' },
+  { 'n', '<leader>w', '<C-w>' },
 }
 
 
