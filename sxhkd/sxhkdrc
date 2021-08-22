@@ -34,7 +34,7 @@ super + d
 
 # Terminal
 super + Return
-    alacritty
+    spawn-alacritty-cwd
 
 # Powermenu
 super + p

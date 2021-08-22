@@ -18,14 +18,3 @@ font:
   normal:
     family: Sarasa Mono SC
   size: 11
-
-key_bindings:
-  # Open new window in same directory
-  # https://github.com/alacritty/alacritty/issues/808#issuecomment-334200570
-  - key: N
-    mods: Control|Shift
-    command:
-      program: /bin/zsh
-      args:
-        - -c
-        - spawn-alacritty-cwd
