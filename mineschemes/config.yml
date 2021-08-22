@@ -33,9 +33,9 @@ tasks:
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE
-  - reload_gtk_theme.py
-  - dark: nvim_color.sh dark
-    light: nvim_color.sh light
+  - ~/.local/bin/reload_gtk_theme.py
+  - dark: ~/.local/bin/nvim_color.sh dark
+    light: ~/.local/bin/nvim_color.sh light
   - dark: flavours apply dracula
     light: flavours apply google-light
   - killall --signal USR1 flashfocus-wrapper
