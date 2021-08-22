@@ -16,6 +16,8 @@ end){
   { 'dracula/vim', as = 'dracula' },
   { 'sonph/onehalf', rtp = 'vim/' },
   { 'folke/tokyonight.nvim', branch = 'main' },
+  'vim-airline/vim-airline',
+  'vim-airline/vim-airline-themes',
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-compe', -- Auto completion
   { 'nvim-treesitter/nvim-treesitter', ['do'] = ':TSUpdate' },

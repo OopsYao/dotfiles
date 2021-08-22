@@ -55,12 +55,27 @@ require 'plugins'
 vim.cmd 'au TermOpen * setlocal nonumber norelativenumber'
 
 -- Colorscheme based on auto background setting event
-function colo(mode)
-    if (mode == 'light') then
-        vim.cmd 'colo tokyonight' -- light theme
-    else
-        vim.cmd 'colo tokyonight' -- dark theme
+colo = (function()
+    local init = true
+    return function(mode)
+        if (mode == 'light') then
+            vim.cmd 'colo tokyonight' -- light theme
+            if (init) then
+                setg { airline_theme = 'onehalflight' }
+                init = false
+            else
+                vim.cmd 'AirlineTheme onehalflight'
+            end
+        else
+            vim.cmd 'colo tokyonight' -- dark theme
+            if (init) then
+                setg { airline_theme = 'dracula' }
+                init = false
+            else
+                vim.cmd 'AirlineTheme dracula'
+            end
+        end
     end
-end
+end)()
 colo 'dark' -- Default. If the terminal is in default mode (dark), no event will be emitted.
 vim.cmd 'au OptionSet background :lua colo(vim.o.bg)'
