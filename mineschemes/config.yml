@@ -5,8 +5,8 @@ tasks:
     light: 'theme: WhiteSur-light-green'
 
   - file: ~/.config/alacritty/alacritty.yml
-    dark: "colors: *dark"
-    light: "colors: *light"
+    dark: "- *dark"
+    light: "- *light"
 
   - file: ~/.config/flashfocus/flashfocus.yml
     dark: |2-
