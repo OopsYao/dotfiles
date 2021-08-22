@@ -2,9 +2,7 @@
 
 [colors]
 ; Hot reload only works for this file (not working for included files)
-; START OOO
-include-file = ~/.config/polybar/dracula.ini
-; END OOO
+include-file = ~/.config/polybar/colors.ini
 
 [settings]
 ; Fallback value for modules
