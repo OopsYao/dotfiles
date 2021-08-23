@@ -1,5 +1,5 @@
-# START OOO
-theme: WhiteSur-dark-green
-# END OOO
+theme:
+  light: WhiteSur-light-green
+  dark: WhiteSur-dark-green
 icon: Tela-dark
 cursor: Bibata-Modern-Ice

@@ -1,8 +1,22 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import yaml
 import between_lines as bl
+
+if len(sys.argv) <= 1:
+    exit(-1)
+scheme = sys.argv[1]
+
+
+def get_entry(config, entry):
+    v = config.get(entry)
+    if (type(v) == dict):
+        return v.get(scheme)
+    else:
+        return v
+
 
 class ConfigError(Exception):
     pass
@@ -10,9 +24,9 @@ class ConfigError(Exception):
 with open(os.path.expanduser('~/.config/gtk/config.yml'), 'r') as f:
     config = yaml.safe_load(f)
 
-    theme = config.get('theme')
-    icon = config.get('icon')
-    cursor = config.get('cursor')
+    theme = get_entry(config, 'theme')
+    icon = get_entry(config, 'icon')
+    cursor = get_entry(config, 'cursor')
     if None in [theme, icon, cursor]:
         raise ConfigError('Invalid configuration')
 

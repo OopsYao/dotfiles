@@ -1,9 +1,5 @@
 # Hooks of tasks are exeuted in order
 tasks:
-  - file: ~/.config/gtk/config.yml
-    dark: 'theme: WhiteSur-dark-green'
-    light: 'theme: WhiteSur-light-green'
-
   - file: ~/.config/alacritty/alacritty.yml
     dark: "- *dark"
     light: "- *light"
@@ -28,7 +24,8 @@ tasks:
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE
-  - ~/.local/bin/reload_gtk_theme.py
+  - dark: ~/.local/bin/reload_gtk_theme.py dark
+    light: ~/.local/bin/reload_gtk_theme.py light
   - dark: ~/.local/bin/nvim_color.sh dark
     light: ~/.local/bin/nvim_color.sh light
   - dark: flavours apply dracula
