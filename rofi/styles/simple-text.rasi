@@ -35,10 +35,7 @@ configuration {
 }
 
 // Note that this file is intended to be loaded in its parent dir (soft link),
-// hence it is `colorschemes` not `../colorschemes`.
-// START OOO
-@import "colorschemes/cocoa.rasi"
-// END OOO
+@import "colors.rasi"
 
 * {
     background-color: @bg;
