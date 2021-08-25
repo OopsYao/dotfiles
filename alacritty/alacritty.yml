@@ -3,16 +3,8 @@
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
 # Theme schemes
-schemes:
-  - &light
-    ~/.config/alacritty/tokyonight-day.yml
-  - &dark
-    ~/.config/alacritty/dracula.yml
-
 import:
-# START OOO
-- *dark
-# END OOO
+  - ~/.config/alacritty/theme.yml
 
 font:
   normal:
