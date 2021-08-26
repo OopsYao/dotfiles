@@ -15,15 +15,11 @@ xidlehook \
   --detect-sleep \
   --not-when-fullscreen \
   --not-when-audio \
-  `# Dim the screen after 300 seconds, undim if user becomes active` \
-  --timer 300 \
+  `# Dim the screen after 600 seconds, undim if user becomes active` \
+  --timer 600 \
     'dim_screen.py' \
     "$canceller" \
-  `# Undim & lock after 120 more seconds` \
-  --timer 120 \
-    'lock.sh' \
-    "$canceller" \
-  `# Suspend after 180 more seconds` \
-  --timer 180 \
+  `# Suspend after 60 more seconds` \
+  --timer 60 \
     'systemctl suspend' \
     "$canceller"
