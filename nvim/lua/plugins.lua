@@ -27,7 +27,7 @@ end){
   'psliwka/vim-smoothie', -- Smooth scrolling
   'kyazdani42/nvim-web-devicons', -- Icons
   'romgrk/barbar.nvim',
-  'kyazdani42/nvim-tree.lua', -- File explorer
+  { 'kevinhwang91/rnvimr', branch = 'main' }, -- File explorer
   'lukas-reineke/indent-blankline.nvim', -- Indent lines
   'norcalli/nvim-colorizer.lua',
 }
@@ -57,17 +57,9 @@ require'nvim-treesitter.configs'.setup {
 
 require'gitsigns'.setup {}
 
--- nvim-tree
-setup'nvim_tree' {
-  side = 'right',
-  auto_open = 1, -- Auto open when nvim started
-  quit_on_open = 1, -- Auto close after open a file
-  git_hl = 1, -- Dim git ignored files
-  icons = { default = '', git = { ignored = '' } },
-  ignore = { '.git', 'node_modules', '__pycache__' },
-}
+-- rnvimr
 keymap {
-  { 'n', '<C-n>', ':NvimTreeToggle<CR>' },
+  { 'n', '<C-n>', ':RnvimrToggle<CR>' },
 }
 
 -- barbar.nvim
