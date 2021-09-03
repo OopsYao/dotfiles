@@ -5,7 +5,7 @@ from easing_functions import CubicEaseInOut
 import time
 
 start = 1
-end = 0.2
+end = 0.35
 steps = 16
 # ease maps [0, steps] to [start, end]
 ease = CubicEaseInOut(start, end, steps)
