@@ -9,10 +9,9 @@ options = {
 }
 
 options_stdin = '\n'.join(options.values())
-rofi_style = '~/.config/rofi/styles/powermenu.rasi'
 chosen = os.popen(f"echo '{options_stdin}'"
                   f'| rofi -dmenu -i -p "LET\'S"'
-                  f' -theme {rofi_style}').read().strip()
+                  f' -theme powermenu').read().strip()
 if chosen == options['sleep']:
     os.system('systemctl suspend')
 elif chosen == options['hibernate']:

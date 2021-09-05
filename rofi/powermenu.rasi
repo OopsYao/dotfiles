@@ -1,0 +1,10 @@
+@import "simple-text"
+
+listview {
+    lines: 4;
+    columns: 1;
+}
+
+window {
+    width: 10%;
+}
