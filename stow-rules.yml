@@ -7,3 +7,4 @@ rules:
   ipython: ~/.ipython/profile_default
   xidlehook: ~/.local/bin
   pymod: ~/.pymod
+  zsh: '~'
