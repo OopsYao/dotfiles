@@ -1,12 +1,13 @@
 def one(wins):
     if 'Alacritty' in wins:
         return {
-            'horizontal': 400,
-            'vertical': 150
+            'horizontal': 100,
+            'top': 60,
+            'bottom': 40,
         }
     else:
         return {
-            'horizontal': 100,
+            'horizontal': 80,
             'top': 40,
             'bottom': 25
         }
