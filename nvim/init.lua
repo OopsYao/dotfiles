@@ -65,6 +65,8 @@ colo = (function()
     return function(mode)
         if (mode == 'light') then
             vim.cmd 'colo tokyonight' -- light theme
+            -- Specified manually to avoid blinking causing by the change of vim.o.background
+            vim.g.tokyonight_style = 'day'
             if (init) then
                 setg { airline_theme = 'onehalflight' }
                 init = false
@@ -73,6 +75,7 @@ colo = (function()
             end
         else
             vim.cmd 'colo tokyonight' -- dark theme
+            vim.g.tokyonight_style = 'storm'
             if (init) then
                 setg { airline_theme = 'dracula' }
                 init = false
@@ -82,5 +85,17 @@ colo = (function()
         end
     end
 end)()
-colo 'dark' -- Default. If the terminal is in default mode (dark), no event will be emitted.
+
+-- Determine dark/light before the terminal passes info
+-- Also serves as fallback if the terminal doesnot provide dark/light info
+local f = io.open(os.getenv('HOME') .. '/.DARK_MODE', 'r')
+if f ~= nil then
+    colo 'dark'
+    io.close(f)
+else
+    colo 'light'
+end
+
+-- By default, nvim will check if the terminal is in light mode, and change
+-- vim.o.background. (If it is in dark mode, nothing happens)
 vim.cmd 'au OptionSet background :lua colo(vim.o.bg)'
