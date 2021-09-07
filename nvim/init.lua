@@ -12,6 +12,9 @@ seto {
   number = true,
   relativenumber = true,
 
+  -- Highlight current line
+  cursorline = true,
+
   -- Tab and space
   expandtab = true,
   tabstop = 4,
@@ -45,6 +48,8 @@ keymap {
   -- Clear highlight
   { 'n', '<esc>', ':noh<CR><esc>' },
   { 'n', '<leader>w', '<C-w>' },
+  -- Exit terminal mode
+  { 't', '<C-\\>', '<C-\\><C-N>' },
 }
 
 
