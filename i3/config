@@ -147,4 +147,4 @@ exec --no-startup-id i3layout.py
 # Polybar
 # Better started after wm, as it relys on some workspace info and startup speed
 # is not so fast.
-exec --no-startup-id polybar main
+exec --no-startup-id launch_polybar.sh
