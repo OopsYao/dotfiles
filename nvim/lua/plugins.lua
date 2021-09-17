@@ -82,6 +82,13 @@ require('packer').startup({function()
       })
     end,
   }
+  -- Keybinding popup
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require('which-key').setup()
+    end
+  }
 end,
 config = {
   display = {
