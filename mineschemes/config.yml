@@ -28,5 +28,5 @@ hooks:
   - dark: ln -sf ~/.config/rofi/colorschemes/cocoa.rasi ~/.config/rofi/colors.rasi
     light: ln -sf ~/.config/rofi/colorschemes/white.rasi ~/.config/rofi/colors.rasi
   - dark: ln -sf ~/.config/alacritty/dracula.yml ~/.config/alacritty/theme.yml
-    light: ln -sf ~/.config/alacritty/tokyonight-day.yml ~/.config/alacritty/theme.yml
+    light: ln -sf ~/.config/alacritty/paperwhite.yml ~/.config/alacritty/theme.yml
   - cat ~/.config/alacritty/alacritty.yml | sponge ~/.config/alacritty/alacritty.yml
