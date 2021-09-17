@@ -27,7 +27,7 @@ fuckgfw
 alias clip="xclip -selection clipboard"
 
 mkfile() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
-alias v="nvim"
+alias e="nvim"
 alias rg="ranger"
 alias cat="bat"
 alias ls="exa --icons"
