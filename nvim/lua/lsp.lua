@@ -16,9 +16,36 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
-local servers = { 'pylsp', 'tsserver' }
-for _, lsp in ipairs(servers) do
-  require'lspconfig'[lsp].setup {
-    on_attach = on_attach
+local nvim_lsp = require'lspconfig'
+
+nvim_lsp.pylsp.setup {
+  on_attach = on_attach,
+}
+
+nvim_lsp.tsserver.setup {
+  on_attach = function(client, ...)
+    client.resolved_capabilities.document_formatting = false
+    on_attach(client, ...)
+  end
+}
+
+local fts = { 'javascript', 'vue', 'css', 'scss' }
+nvim_lsp.diagnosticls.setup {
+  on_attach = on_attach,
+  filetypes = fts,
+  init_options = {
+    formatFiletypes = (function()
+      local t = {}
+      for _, ft in ipairs(fts) do
+        t[ft] = 'prettier'
+      end
+      return t
+    end)(),
+    formatters = {
+      prettier = {
+        command = 'npx',
+        args = { 'prettier', '--stdin-filepath', '%filepath' },
+      }
+    },
   }
-end
+}
