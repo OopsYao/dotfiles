@@ -9,8 +9,6 @@ require('packer').startup({function()
   use { 'sonph/onehalf', rtp = 'vim/' }
   use { 'folke/tokyonight.nvim', branch = 'main' }
   use { 'projekt0n/github-nvim-theme', config = function() require'colors' end }
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
   use { 
     'neovim/nvim-lspconfig',
     config = function() require 'lsp' end,
