@@ -1,13 +1,5 @@
 # Hooks of tasks are exeuted in order
 tasks:
-  - file: ~/.config/flashfocus/flashfocus.yml
-    dark: |2-
-          default-opacity: 1
-          flash-opacity: 0.8
-    light: |2-
-          default-opacity: 0.7
-          flash-opacity: 0.56
-
   - file: ~/.config/bat/config
     dark: --theme="Dracula"
     light: --theme="OneHalfLight"
