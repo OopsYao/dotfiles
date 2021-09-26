@@ -25,4 +25,4 @@ colo = (function()
     end
 end)()
 
-colo()
+colo('dark')

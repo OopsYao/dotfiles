@@ -1,22 +1,14 @@
 # Hooks of tasks are exeuted in order
-tasks:
-  - file: ~/.config/bat/config
-    dark: --theme="Dracula"
-    light: --theme="OneHalfLight"
+tasks: []
 
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE
   - dark: ~/.local/bin/reload_gtk_theme.py dark
     light: ~/.local/bin/reload_gtk_theme.py light
-  - dark: ~/.local/bin/nvim_color.sh dark
-    light: ~/.local/bin/nvim_color.sh light
   - killall --signal USR1 flashfocus-wrapper
   - dark: ln -sf ~/.config/polybar/dracula.ini ~/.config/polybar/colors.ini
     light: ln -sf ~/.config/polybar/snow.ini ~/.config/polybar/colors.ini
   - polybar-msg cmd restart
   - dark: ln -sf ~/.config/rofi/colorschemes/cocoa.rasi ~/.config/rofi/colors.rasi
     light: ln -sf ~/.config/rofi/colorschemes/white.rasi ~/.config/rofi/colors.rasi
-  - dark: ln -sf ~/.config/alacritty/dracula.yml ~/.config/alacritty/theme.yml
-    light: ln -sf ~/.config/alacritty/paperwhite.yml ~/.config/alacritty/theme.yml
-  - cat ~/.config/alacritty/alacritty.yml | sponge ~/.config/alacritty/alacritty.yml
