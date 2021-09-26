@@ -11,8 +11,6 @@ hooks:
     light: ~/.local/bin/reload_gtk_theme.py light
   - dark: ~/.local/bin/nvim_color.sh dark
     light: ~/.local/bin/nvim_color.sh light
-  - dark: flavours apply dracula
-    light: flavours apply google-light
   - killall --signal USR1 flashfocus-wrapper
   - dark: ln -sf ~/.config/polybar/dracula.ini ~/.config/polybar/colors.ini
     light: ln -sf ~/.config/polybar/snow.ini ~/.config/polybar/colors.ini
