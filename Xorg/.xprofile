@@ -1,0 +1,35 @@
+# No bell
+xset -b
+# Font setting
+xsettingsd &
+
+# export http_proxy="http://localhost:7890"
+# export https_proxy="http://localhost:7890"
+# Chromium auto proxy detect
+export auto_proxy
+
+brightness_watcher.py | xob &
+pulse_volume_watcher.py | xob &
+
+# Hotkey management
+sxhkd &
+
+flashfocus_wrapper.py &
+
+# picom --experimental-backends &
+picom &
+
+dunst &
+
+# Automounter for removable media
+udiskie &
+
+feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
+
+start_xidlehook.sh &
+
+# proxy
+~/gnome_proxy.py
+
+# Multi-head
+~/.screenlayout/dual-monitor.sh

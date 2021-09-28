@@ -8,3 +8,4 @@ rules:
   xidlehook: ~/.local/bin
   pymod: ~/.pymod
   zsh: '~'
+  Xorg: '~'

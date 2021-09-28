@@ -1,0 +1,10 @@
+! RK61 exchange up with slash
+!keycode  61 = Up NoSymbol Up
+!keycode 111 = slash question slash question
+
+! Turn CapsLock into Control
+! https://wiki.archlinux.org/title/Xmodmap#Turn_CapsLock_into_Control
+clear lock
+clear control
+keycode 66 = Control_L
+add control = Control_L Control_R
