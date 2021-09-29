@@ -1,6 +1,7 @@
 global:
   .: ~/.config/[pkg]
   '@bin': ~/.local/bin
+  '@svc': ~/.config/systemd/user
 
 rules:
   darkman: ~/.local/share # Means darkman: { .: ~/.local/share }
