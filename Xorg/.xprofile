@@ -26,8 +26,6 @@ udiskie &
 
 feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
 
-start_xidlehook.sh &
-
 # proxy
 ~/gnome_proxy.py
 
