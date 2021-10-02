@@ -1,0 +1,10 @@
+[Unit]
+Description=Dunst --- the notification daemon
+PartOf=graphical-session.target
+After=graphical-session.target picom.service
+
+[Service]
+ExecStart=/usr/bin/dunst
+
+[Install]
+WantedBy=graphical-session.target

@@ -10,8 +10,6 @@ export auto_proxy
 
 flashfocus_wrapper.py &
 
-dunst &
-
 feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
 
 # proxy
