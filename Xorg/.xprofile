@@ -16,9 +16,6 @@ sxhkd &
 
 flashfocus_wrapper.py &
 
-# picom --experimental-backends &
-picom &
-
 dunst &
 
 feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
