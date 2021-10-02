@@ -46,9 +46,16 @@ if [ -n "$RANGER_LEVEL" ]; then export PS1="[RG] $PS1"; fi
 # z https://github.com/rupa/z
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-# Easy python virtual env
-pyenv() { source ${1:=.venv}/bin/activate }
-cdenv() { conda activate ${1:=./.cenv} }
+# Easy python/conda virtual env
+venv() {
+    venv_dir=${1:=./.venv}
+    if [[ -f "$venv_dir/pyvenv.cfg" ]]; then
+        source $venv_dir/bin/activate 
+    else
+        conda activate $venv_dir \
+        && alias deactivate="conda deactivate && unalias deactivate"
+    fi
+}
 
 # Banner
 if [[ -o login ]] then else
