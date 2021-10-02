@@ -1,0 +1,8 @@
+[Unit]
+Description=Automounter for removable media
+
+[Service]
+ExecStart=/usr/bin/udiskie
+
+[Install]
+WantedBy=default.target

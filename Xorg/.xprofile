@@ -21,9 +21,6 @@ picom &
 
 dunst &
 
-# Automounter for removable media
-udiskie &
-
 feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
 
 # proxy
