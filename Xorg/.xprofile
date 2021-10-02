@@ -11,9 +11,6 @@ export auto_proxy
 brightness_watcher.py | xob &
 pulse_volume_watcher.py | xob &
 
-# Hotkey management
-sxhkd &
-
 flashfocus_wrapper.py &
 
 dunst &

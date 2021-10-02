@@ -10,4 +10,6 @@ rules:
   pymod: ~/.pymod
   zsh: '~'
   Xorg: '~'
-  systemd: ~/.config/systemd/user
+  systemd:
+    .: ~/.config/systemd/user
+    env: ~/.config/environment.d
