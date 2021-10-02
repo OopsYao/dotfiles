@@ -8,9 +8,6 @@ xsettingsd &
 # Chromium auto proxy detect
 export auto_proxy
 
-brightness_watcher.py | xob &
-pulse_volume_watcher.py | xob &
-
 flashfocus_wrapper.py &
 
 dunst &
