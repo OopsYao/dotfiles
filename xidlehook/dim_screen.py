@@ -13,9 +13,17 @@ dim_seq = [ease(t) for t in range(1 + steps)]
 brig_seq = reversed(dim_seq)
 
 
+# Displays like ['HDMI-1', 'eDP-1']
+displays = [d for d
+            in os.popen("xrandr | awk '/ connected/{print $1}'").read()
+            .split('\n')
+            if d != '']
+
+
 def adjust(br_seq):
     for b in br_seq:
-        os.system(f'xrandr --output "$PRIMARY_DISPLAY" --brightness {b:.2f}')
+        for d in displays:
+            os.system(f'xrandr --output "{d}" --brightness {b:.2f}')
         time.sleep(0.01)
 
 

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # https://gitlab.com/jD91mZM2/xidlehook#example
 
-# lock.sh needs this
-export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
 # Only the canceller of the current timer period will be executed
 # at the end of idle.
 # e.g., the second canceller will be executed only if
