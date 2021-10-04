@@ -19,5 +19,5 @@ xidlehook \
     "$canceller" \
   `# Suspend after 60 more seconds` \
   --timer 60 \
-    'systemctl suspend' \
+    'sleep_on_low_cpu.py' \
     "$canceller"
