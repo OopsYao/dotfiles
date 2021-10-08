@@ -1,0 +1,8 @@
+[Unit]
+Description=A cross-platform application which using mpv as DLNA Media Renderer.
+
+[Service]
+ExecStart=/usr/bin/macast-cli
+
+[Install]
+WantedBy=default.target
