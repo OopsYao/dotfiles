@@ -15,7 +15,7 @@ chosen = os.popen(f"echo '{options_stdin}'"
 if chosen == options['sleep']:
     os.system('systemctl suspend')
 elif chosen == options['hibernate']:
-    os.system('systemctl hibernate')
+    os.system('sudo grub-reboot Windows && systemctl hibernate')
 elif chosen == options['reboot']:
     os.system('systemctl reboot')
 elif chosen == options['shutdown']:
