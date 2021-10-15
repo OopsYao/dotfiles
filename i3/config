@@ -134,7 +134,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+w gaps horizontal current set 50, gaps top current set 40, gaps bottom current set 25
 
 # Mark systemd user graphical session as started
-exec --no-startup-id systemctl --user import-enviroment; systemctl --user start xsession.target
+exec --no-startup-id systemctl --user start xsession.target
 
 # Autostart
 exec --no-startup-id dex -a -e i3
