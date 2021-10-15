@@ -4,8 +4,8 @@ tasks: []
 hooks:
   - dark: touch ~/.DARK_MODE
     light: rm -f ~/.DARK_MODE
-  - dark: ~/.local/bin/reload_gtk_theme.py dark
-    light: ~/.local/bin/reload_gtk_theme.py light
+  - dark: reload_gtk_theme.py dark
+    light: reload_gtk_theme.py light
   - killall --signal USR1 flashfocus-wrapper
   - dark: ln -sf ~/.config/polybar/dracula.ini ~/.config/polybar/colors.ini
     light: ln -sf ~/.config/polybar/snow.ini ~/.config/polybar/colors.ini
