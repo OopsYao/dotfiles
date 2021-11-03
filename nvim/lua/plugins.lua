@@ -91,6 +91,24 @@ require('packer').startup({function()
       require('which-key').setup()
     end
   }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local keymap = require'utils'.keymap{ noremap = true, silent = true }
+      keymap {
+        { 'n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>' },
+        { 'n', '<leader>fg', '<cmd>Telescope live_grep<cr>' },
+        { 'n', '<leader>fb', '<cmd>Telescope buffers<cr>' },
+        { 'n', '<leader>fh', '<cmd>Telescope help_tags<cr>' },
+      }
+      require('telescope').setup{
+          defaults = {
+              file_ignore_patterns = { '^.git/' },
+          },
+      }
+    end,
+  }
 end,
 config = {
   display = {
