@@ -2,15 +2,26 @@
 import os
 import sys
 from easing_functions import CubicEaseInOut
-import time
+
+
+def unique(arr):
+    uni = []
+    s = set()
+    for it in arr:
+        if it not in s:
+            uni.append(it)
+            s.add(it)
+    return uni
+
 
 start = 1
 end = 0.35
-steps = 16
+steps = 32
 # ease maps [0, steps] to [start, end]
 ease = CubicEaseInOut(start, end, steps)
-dim_seq = [ease(t) for t in range(1 + steps)]
-brig_seq = reversed(dim_seq)
+dim_seq = unique([f'{ease(t):.2f}'
+                  for t in range(1 + steps)])  # xrandr allows two-digits
+brig_seq = [*reversed(dim_seq)]
 
 
 # Displays like ['HDMI-1', 'eDP-1']
@@ -21,10 +32,9 @@ displays = [d for d
 
 
 def adjust(br_seq):
-    for b in br_seq:
+    for b in br_seq[1:]:  # Skip the start value
         for d in displays:
-            os.system(f'xrandr --output "{d}" --brightness {b:.2f}')
-        time.sleep(0.01)
+            os.system(f'xrandr --output "{d}" --brightness {b}')
 
 
 if len(sys.argv) > 1 and sys.argv[1] == 'brighten':
