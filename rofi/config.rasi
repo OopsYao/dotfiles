@@ -21,5 +21,6 @@ configuration {
     display-ssh: "  ";
     display-drun: "  ";
     display-combi: "  ";
-    theme: "simple-text"; // This disables default theme
 }
+
+@theme "simple-text" // This disables the default theme
