@@ -14,4 +14,4 @@ def cpu_usage():
 for p in cpu_usage():
     if p < threshold:
         break
-os.system('systemctl suspend')
+os.system('[ -f ~/.IDLE_SLEEP ] && systemctl suspend')
