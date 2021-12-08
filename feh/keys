@@ -1,0 +1,10 @@
+# Unbound it
+scroll_right 
+scroll_left 
+scroll_up 
+scroll_down 
+
+scroll_up Up k
+scroll_down Down j
+scroll_left Left h
+scroll_right Right l

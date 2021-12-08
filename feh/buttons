@@ -1,0 +1,7 @@
+# Unbound it
+zoom_in
+zoom_out
+
+# Mouse scroll for zoom
+zoom_in 4
+zoom_out 5
