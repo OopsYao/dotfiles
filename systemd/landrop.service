@@ -1,0 +1,11 @@
+[Unit]
+Description=Drop any files to any devices on your LAN.
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/landrop
+
+[Install]
+WantedBy=default.target
+WantedBy=graphical-session.target
