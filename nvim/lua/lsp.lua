@@ -11,6 +11,7 @@ require'compe'.setup {
 }
 
 -- LSP
+-- for lspconfig doc see `:h lspconfig`
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local opts = { noremap=true, silent=true }
@@ -20,6 +21,13 @@ local nvim_lsp = require'lspconfig'
 
 nvim_lsp.pylsp.setup {
   on_attach = on_attach,
+  settings = {
+    pylsp = {
+      -- Honor the flake8 config
+      -- https://github.com/python-lsp/python-lsp-server#configuration
+      configurationSources = {'flake8'},
+    }
+  }
 }
 
 nvim_lsp.tsserver.setup {
