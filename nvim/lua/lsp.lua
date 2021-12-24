@@ -37,7 +37,7 @@ nvim_lsp.tsserver.setup {
   end
 }
 
-local fts = { 'javascript', 'vue', 'css', 'scss' }
+local fts = { 'javascript', 'vue', 'css', 'scss', 'lua' }
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
   filetypes = fts,
@@ -46,6 +46,9 @@ nvim_lsp.diagnosticls.setup {
       local t = {}
       for _, ft in ipairs(fts) do
         t[ft] = 'prettier'
+        if ft == 'lua' then
+            t[ft] = 'luaformatter'
+        end
       end
       return t
     end)(),
@@ -53,7 +56,11 @@ nvim_lsp.diagnosticls.setup {
       prettier = {
         command = 'npx',
         args = { 'prettier', '--stdin-filepath', '%filepath' },
-      }
+      },
+      luaformatter = {
+        command = 'lua-format',
+        args = { '%filepath' },
+      },
     },
   }
 }
