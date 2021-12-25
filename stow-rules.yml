@@ -14,3 +14,4 @@ rules:
     .: ~/.config/systemd/user
     env: ~/.config/environment.d
   flake8: '~/.config'
+  proxychains: ~/.proxychains
