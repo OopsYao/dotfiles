@@ -80,7 +80,8 @@ require('packer').startup({function()
     'norcalli/nvim-colorizer.lua',
     config = function()
       require'colorizer'.setup({ '*' }, {
-        rgb_fn = true
+        rgb_fn = true,
+        RRGGBBAA = true,
       })
     end,
   }
