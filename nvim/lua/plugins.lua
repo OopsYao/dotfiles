@@ -101,6 +101,7 @@ require('packer').startup({function()
         { 'n', '<leader>fg', '<cmd>Telescope live_grep<cr>' },
         { 'n', '<leader>fb', '<cmd>Telescope buffers<cr>' },
         { 'n', '<leader>fh', '<cmd>Telescope help_tags<cr>' },
+        { 'n', '<leader>fr', '<cmd>lua require("telescope.builtin").file_browser({hidden=true})<cr>' },
       }
       require('telescope').setup{
           defaults = {
