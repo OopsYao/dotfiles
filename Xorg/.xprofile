@@ -1,17 +1,12 @@
 # No bell
 xset -b
 
-# export http_proxy="http://localhost:7890"
-# export https_proxy="http://localhost:7890"
 # Chromium auto proxy detect
 export auto_proxy
-
-flashfocus_wrapper.py &
 
 feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
 
 # proxy
 ~/gnome_proxy.py
-
-# Multi-head
-~/.screenlayout/dual-monitor.sh
+export http_proxy="http://localhost:7890"
+export https_proxy="http://localhost:7890"
