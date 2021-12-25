@@ -1,5 +1,7 @@
 version: 2
 languages:
   lua:
-  - format-command: lua-format -i
-    format-stdin: true
+    - format-command: lua-format -i
+      format-stdin: true
+  yaml:
+    - format-command: PATH=./node_modules/.bin:$PATH prettier --single-quote --parser yaml

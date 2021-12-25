@@ -66,5 +66,17 @@ nvim_lsp.diagnosticls.setup {
 }
 nvim_lsp.efm.setup{
     on_attach = on_attach,
-    filetypes = {'lua'},
+    filetypes = {'lua', 'yaml'},
+}
+
+-- YAML
+nvim_lsp.yamlls.setup {
+    on_attach = on_attach,
+    settings = {
+        yaml = {
+            schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+            },
+        },
+    },
 }
