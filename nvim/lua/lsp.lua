@@ -37,7 +37,7 @@ nvim_lsp.tsserver.setup {
   end
 }
 
-local fts = { 'javascript', 'vue', 'css', 'scss', 'lua' }
+local fts = { 'javascript', 'vue', 'css', 'scss' }
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
   filetypes = fts,
@@ -63,4 +63,8 @@ nvim_lsp.diagnosticls.setup {
       },
     },
   }
+}
+nvim_lsp.efm.setup{
+    on_attach = on_attach,
+    filetypes = {'lua'},
 }

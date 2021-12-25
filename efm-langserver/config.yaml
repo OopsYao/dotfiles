@@ -1,0 +1,5 @@
+version: 2
+languages:
+  lua:
+  - format-command: lua-format -i
+    format-stdin: true
