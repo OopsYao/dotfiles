@@ -4,7 +4,8 @@ languages:
     - format-command: lua-format -i
       format-stdin: true
   yaml:
-    - format-command: PATH=./node_modules/.bin:$PATH prettier --single-quote --parser yaml
+    - format-command: ~/.local/bin/prettier --stdin-filepath ${INPUT}
+      format-stdin: true
   javascript:
     - format-command: ~/.local/bin/prettier --stdin-filepath ${INPUT}
       format-stdin: true
