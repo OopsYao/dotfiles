@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+PATH=./node_modules/.bin:$PATH
+if [ -f ".prettierrc.*" ]; then
+    pretter "$@"
+else
+    prettier "$@" --config ~/.config/prettier/.prettierrc.toml
+fi

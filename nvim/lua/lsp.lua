@@ -30,43 +30,9 @@ nvim_lsp.pylsp.setup {
   }
 }
 
-nvim_lsp.tsserver.setup {
-  on_attach = function(client, ...)
-    client.resolved_capabilities.document_formatting = false
-    on_attach(client, ...)
-  end
-}
-
-local fts = { 'javascript', 'vue', 'css', 'scss' }
-nvim_lsp.diagnosticls.setup {
-  on_attach = on_attach,
-  filetypes = fts,
-  init_options = {
-    formatFiletypes = (function()
-      local t = {}
-      for _, ft in ipairs(fts) do
-        t[ft] = 'prettier'
-        if ft == 'lua' then
-            t[ft] = 'luaformatter'
-        end
-      end
-      return t
-    end)(),
-    formatters = {
-      prettier = {
-        command = 'npx',
-        args = { 'prettier', '--stdin-filepath', '%filepath' },
-      },
-      luaformatter = {
-        command = 'lua-format',
-        args = { '%filepath' },
-      },
-    },
-  }
-}
 nvim_lsp.efm.setup{
     on_attach = on_attach,
-    filetypes = {'lua', 'yaml'},
+    filetypes = {'lua', 'yaml', 'javascript'},
 }
 
 -- YAML

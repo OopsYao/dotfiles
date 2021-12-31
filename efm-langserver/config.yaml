@@ -5,3 +5,12 @@ languages:
       format-stdin: true
   yaml:
     - format-command: PATH=./node_modules/.bin:$PATH prettier --single-quote --parser yaml
+  javascript:
+    - format-command: ~/.local/bin/prettier --stdin-filepath ${INPUT}
+      format-stdin: true
+    - lint-command: eslint -f visualstudio --stdin --stdin-filename ${INPUT}
+      lint-ignore-exit-code: true
+      lint-stdin: true
+      lint-formats:
+        - '%f(%l,%c): %tarning %m'
+        - '%f(%l,%c): %rror %m'
