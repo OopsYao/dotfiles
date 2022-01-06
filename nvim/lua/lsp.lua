@@ -46,3 +46,20 @@ nvim_lsp.yamlls.setup {
         },
     },
 }
+
+-- LaTeX
+require'lspconfig'.texlab.setup {
+    on_attach = on_attach,
+    settings = {
+      texlab = {
+        build = {
+          args = { "-xelatex", "-interaction=nonstopmode", "-synctex=1", "%f" },
+          onSave = true,
+        },
+        chktex = {
+          onEdit = true,
+          onOpenAndSave = true,
+        },
+      },
+    },
+}

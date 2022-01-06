@@ -16,3 +16,6 @@ rules:
   flake8: '~/.config'
   proxychains: ~/.proxychains
   eslint: '~'
+  latexindent:
+    .: '~'
+    configs: ~/.config/[pkg]
