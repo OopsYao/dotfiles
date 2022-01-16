@@ -19,3 +19,4 @@ rules:
   latexindent:
     .: '~'
     configs: ~/.config/[pkg]
+  libinput-gestures: '~/.config'
