@@ -17,12 +17,6 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
     brightnessctl set 20-
 
-# Screenshot
-# from https://www.reddit.com/r/i3wm/comments/65vis5/screenshot_commands_from_my_i3_config/
-shift + Print
-    scrot -s 'screenshot_%Y%m%d_%H%M%S.png' \
-        -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
-
 # Rofi
 super + d
     rofi -no-lazy-grab -show drun \
@@ -35,3 +29,7 @@ super + Return
 # Powermenu
 super + p
     powermenu.py
+
+# Scripts
+super + q
+    scripts.py
