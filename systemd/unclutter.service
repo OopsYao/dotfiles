@@ -1,0 +1,10 @@
+[Unit]
+Description=An X11 tool to hide cursor
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/unclutter
+
+[Install]
+WantedBy=graphical-session.target
