@@ -1,1 +1,5 @@
 double_quote_to_single_quote: true
+break_before_functioncall_rp: true
+break_after_functioncall_lp: true
+align_parameter: false
+chop_down_parameter: true
