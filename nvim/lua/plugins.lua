@@ -94,7 +94,10 @@ require('packer').startup({function()
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-file-browser.nvim',
+    },
     config = function()
       local keymap = require'utils'.keymap{ noremap = true, silent = true }
       keymap {
@@ -102,13 +105,14 @@ require('packer').startup({function()
         { 'n', '<leader>fg', '<cmd>Telescope live_grep<cr>' },
         { 'n', '<leader>fb', '<cmd>Telescope buffers<cr>' },
         { 'n', '<leader>fh', '<cmd>Telescope help_tags<cr>' },
-        { 'n', '<leader>fr', '<cmd>lua require("telescope.builtin").file_browser({hidden=true})<cr>' },
+        { 'n', '<leader>fr', '<cmd>Telescope file_browser<cr>' },
       }
       require('telescope').setup{
           defaults = {
               file_ignore_patterns = { '%.git/' },
           },
       }
+      require('telescope').load_extension 'file_browser'
     end,
   }
   use {
