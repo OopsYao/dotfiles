@@ -34,6 +34,8 @@ alias ls="exa --icons"
 alias plz="sudo"
 alias pls="sudo"
 alias please="sudo"
+# Fix issues on some remotes as then do not recognize alacritty
+alias ssh="TERM=xterm-256color ssh"
 
 if command -v thefuck &> /dev/null
 then
