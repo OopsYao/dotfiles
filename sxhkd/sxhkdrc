@@ -33,3 +33,9 @@ super + p
 # Scripts
 super + q
     scripts.py
+
+# Media, require playerctl
+ctrl + alt + Right
+    playerctl next
+ctrl + alt + Left
+    playerctl previous
