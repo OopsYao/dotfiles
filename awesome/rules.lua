@@ -56,5 +56,8 @@ awful.rules.rules = {
     {
         rule = {class = 'stalonetray'},
         properties = {below = true, focusable = false}
-    }, {rule = {class = 'mpv'}, properties = {titlebars_enabled = false}}
+    }, {
+        rule = {class = 'mpv'},
+        properties = {titlebars_enabled = false, floating = true}
+    }
 }
