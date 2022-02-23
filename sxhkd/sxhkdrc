@@ -3,9 +3,9 @@
 # PulseAudio (pactl)
 # from i3 config
 XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +10%
+    pactl set-sink-volume @DEFAULT_SINK@ +3%
 XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -10%
+    pactl set-sink-volume @DEFAULT_SINK@ -3%
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
