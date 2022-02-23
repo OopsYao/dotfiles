@@ -4,7 +4,7 @@ PartOf=graphical-session.target
 After=graphical-session.target
 
 [Service]
-ExecStart=/bin/sh -c "pulse_volume_watcher.py | xob"
+ExecStart=/bin/sh -c "pactl subscribe | pulse_watcher.py | xob"
 # Must after pulseaudio, otherwire "no default sink" err will arise.
 # But cannot figure out which pulseaudio service, use restart as
 # a workaround.
