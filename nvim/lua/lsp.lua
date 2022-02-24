@@ -1,15 +1,3 @@
--- Enable auto complete
-vim.o.completeopt = 'menuone,noselect'
-require'compe'.setup {
-  source = {
-    path = true,
-    buffer = true,
-    calc = true,
-    nvim_lsp = true,
-    nvim_lua = true,
-  },
-}
-
 -- LSP
 -- for lspconfig doc see `:h lspconfig`
 local on_attach = function(client, bufnr)
@@ -17,6 +5,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
+local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local nvim_lsp = require'lspconfig'
 
 nvim_lsp.pylsp.setup {
@@ -27,12 +16,14 @@ nvim_lsp.pylsp.setup {
       -- https://github.com/python-lsp/python-lsp-server#configuration
       configurationSources = {'flake8'},
     }
-  }
+  },
+  capabilities = capabilities,
 }
 
 nvim_lsp.efm.setup{
     on_attach = on_attach,
     filetypes = {'lua', 'yaml', 'javascript'},
+    capabilities = capabilities,
 }
 
 -- YAML
@@ -45,6 +36,7 @@ nvim_lsp.yamlls.setup {
             },
         },
     },
+    capabilities = capabilities,
 }
 
 -- LaTeX
@@ -62,4 +54,5 @@ require'lspconfig'.texlab.setup {
         },
       },
     },
+    capabilities = capabilities,
 }

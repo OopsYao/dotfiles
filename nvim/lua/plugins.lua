@@ -13,7 +13,18 @@ require('packer').startup({function()
     'neovim/nvim-lspconfig',
     config = function() require 'lsp' end,
   }
-  use 'hrsh7th/nvim-compe' -- Auto completion
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function() 
+        vim.o.completeopt = 'menuone,noselect'
+        require'cmp'.setup {
+            sources = {
+               {name = 'nvim_lsp'}
+            }
+        }
+    end,
+    requires = { 'hrsh7th/cmp-nvim-lsp' },
+  } -- Auto completion
   use {
     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
     config = function()
