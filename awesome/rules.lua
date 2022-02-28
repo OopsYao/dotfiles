@@ -33,13 +33,12 @@ awful.rules.rules = {
         properties = {titlebars_enabled = true}
     }, -- Set Firefox to always map on the tag named "2" on screen 1.
     {
-        rule = {class = 'firefox', type = 'normal'},
+        rule = {role = 'browser'},
         properties = {
             screen = 1,
             tag = 'Web 1',
-            maximized_horizontal = true,
-            maximized_vertical = true,
-            titlebars_enabled = false
+            titlebars_enabled = false,
+            placement = awful.placement.centered
         }
     }, {
         rule = {class = 'netease-cloud-music'},
@@ -59,5 +58,12 @@ awful.rules.rules = {
     }, {
         rule = {class = 'mpv'},
         properties = {titlebars_enabled = false, floating = true}
+    }, {
+        rule_any = {type = {'dialog', 'splash'}},
+        properties = {placement = awful.placement.centered}
+    },
+    {
+        rule_any = {class = {'Alacritty'}},
+        properties = {titlebars_enabled = false}
     }
 }

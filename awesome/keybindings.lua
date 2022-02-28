@@ -21,7 +21,7 @@ end
 
 local navi_by_direction = function(direction)
     return function()
-        awful.client.focus.bydirection(direction, nil, false)
+        awful.client.focus.bydirection(direction, nil, true)
         if client.focus then client.focus:raise() end
     end
 end
