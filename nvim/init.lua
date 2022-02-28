@@ -5,6 +5,7 @@ local keymap = require'utils'.keymap{ noremap = true, silent = true }
 setg {
   -- Leader key
   mapleader = ' ',
+  tex_flavor = 'latex',
 }
 
 seto {
