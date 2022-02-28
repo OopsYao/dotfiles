@@ -9,4 +9,9 @@ import:
 font:
   normal:
     family: Sarasa Mono SC
-  size: 11
+  size: 12
+
+window:
+  padding:
+    x: 12
+    y: 12
