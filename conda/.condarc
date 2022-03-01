@@ -1,0 +1,5 @@
+# Conda configuration
+# https://conda.io/projects/conda/en/latest/configuration.html
+
+# short prefix prompt
+env_prompt: '[{name}] '
