@@ -59,9 +59,16 @@ venv() {
     fi
 }
 
-# Banner
+# Greeting
 if [[ -o login ]] then else
-    pfetch
+    if command -v neofetch &> /dev/null
+    then
+        if [[ "$TERM" == "xterm-kitty" ]] then
+            neofetch --backend kitty
+        else
+            neofetch
+        fi
+    fi
 fi
 
 # Miniconda
