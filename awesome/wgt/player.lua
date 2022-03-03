@@ -20,6 +20,25 @@ end
 
 local toggle = function() awful.spawn.easy_async('playerctl play-pause') end
 
+local url2local = function(url, callback)
+    -- Convert url to local path
+    -- This method is async as it requires network access
+    -- The callback will get local path as argument
+    if url:match('^file') ~= nil then
+        callback(string.sub(url, 8))
+        return
+    end
+    -- Download the image
+    local cover_name = url:match('[^/]+$')
+    local file_path = '/tmp/awesomewm-player-cover-' .. cover_name
+    awful.spawn.easy_async(
+        'curl -s -L -o ' .. file_path .. ' ' .. url,
+        function(stdout, stderr, reason, exit_code)
+            if exit_code == 0 then callback(file_path) end
+        end
+    )
+end
+
 return function()
     -- Widget definition
     local player = wibox.widget {
@@ -36,7 +55,7 @@ return function()
         {
             id = 'info',
             widget = wibox.widget.textbox,
-            buttons = gears.table.join(awful.button({}, 1, toggle)),
+            buttons = gears.table.join(awful.button({}, 1, toggle))
         }
     }
 
@@ -49,8 +68,10 @@ return function()
                     player:get_children_by_id('info')[1].text = info.title ..
                                                                     ' - ' ..
                                                                     info.artist
-                    player:get_children_by_id('cover')[1].image = string.sub(
-                        info.cover, 8
+                    url2local(
+                        info.cover, function(local_path)
+                            player:get_children_by_id('cover')[1].image = local_path
+                        end
                     )
                 end
             end
