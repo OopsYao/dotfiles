@@ -1,0 +1,10 @@
+[Unit]
+Description=Restore hibernation method
+After=hibernate.target
+
+[Service]
+Type=simple
+ExecStart=/home/%i/.local/bin/restore_hibernation_method.sh
+
+[Install]
+WantedBy=hibernate.target

@@ -13,6 +13,7 @@ rules:
   systemd:
     .: ~/.config/systemd/user
     env: ~/.config/environment.d
+    sys: /etc/systemd/system
   flake8: '~/.config'
   proxychains: ~/.proxychains
   eslint: '~'

@@ -3,7 +3,7 @@ import os
 
 options = {
     'sleep': ' Sleep',
-    'hibernate-win': '  Hibernate (Win)',
+    'switch-win': '  Switch Win',
     'reboot': ' Reboot',
     'shutdown': ' Shutdown',
     'hibernate': '  Hibernate',
@@ -15,8 +15,8 @@ chosen = os.popen(f"echo '{options_stdin}'"
                   f' -theme powermenu').read().strip()
 if chosen == options['sleep']:
     os.system('systemctl suspend-then-hibernate')
-elif chosen == options['hibernate-win']:
-    os.system('sudo grub-reboot Windows && systemctl hibernate')
+elif chosen == options['switch-win']:
+    os.system('sudo grub-reboot Windows && sudo set_hibernate_then_reboot.sh && systemctl hibernate')
 elif chosen == options['hibernate']:
     os.system('systemctl hibernate')
 elif chosen == options['reboot']:
