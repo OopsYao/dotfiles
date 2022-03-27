@@ -22,3 +22,4 @@ rules:
     configs: ~/.config/[pkg]
   libinput-gestures: '~/.config'
   conda: '~'
+  pycodestyle: '~/.config'

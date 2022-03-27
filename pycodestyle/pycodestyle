@@ -1,0 +1,4 @@
+# E203 is not PEP 8 compliant 
+# https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#slices
+[pycodestyle]
+ignore = E203
