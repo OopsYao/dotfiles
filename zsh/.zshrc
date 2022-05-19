@@ -2,7 +2,7 @@
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
-plugins=(git zsh-vi-mode zsh-syntax-highlighting zsh-autosuggestions history-substring-search)
+plugins=(git zsh-vi-mode zsh-autosuggestions history-substring-search zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Bind j and k for in vim mode
