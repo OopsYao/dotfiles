@@ -62,7 +62,10 @@ awful.rules.rules = {
         rule_any = {type = {'dialog', 'splash'}},
         properties = {placement = awful.placement.centered}
     }, {
-        rule_any = {class = {'Alacritty', 'wemeet'}},
+        rule_any = {
+            class = {'Alacritty', 'wemeet'},
+            name = {'Picture in picture'}
+        },
         properties = {titlebars_enabled = false}
     }
 }
