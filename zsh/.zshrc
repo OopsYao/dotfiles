@@ -74,3 +74,6 @@ fi
 
 # Miniconda
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+# Update system and neovim plugins
+alias btw="yay && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
