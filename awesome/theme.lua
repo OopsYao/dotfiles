@@ -19,7 +19,7 @@ theme.fg_focus = '#000000'
 theme.wibar_bg = '#efefef85'
 theme.wibar_icon = my_theme .. 'archlinux.svg'
 theme.wibar_icon_color = '#b48ead'
-theme.bg_systray = '#3b4252'
+theme.bg_systray = '#24283B'
 
 theme.tag_focus = '#b48ead'
 
