@@ -48,11 +48,11 @@ awful.rules.rules = {
             titlebars_enabled = false,
             floating = false
         }
-    }, -- Set Zathura to always map on the Reading tag
-    {rule = {class = 'Zathura'}, properties = {tag = 'Read 1'}},
-    -- Make plank unfocusable
-    {rule = {name = 'plank'}, properties = {below = true, focusable = false}},
-    {
+    }, {
+        -- Make plank unfocusable
+        rule = {name = 'plank'},
+        properties = {below = true, focusable = false}
+    }, {
         rule = {class = 'stalonetray'},
         properties = {below = true, focusable = false}
     }, {
@@ -61,9 +61,8 @@ awful.rules.rules = {
     }, {
         rule_any = {type = {'dialog', 'splash'}},
         properties = {placement = awful.placement.centered}
-    },
-    {
-        rule_any = {class = {'Alacritty'}},
+    }, {
+        rule_any = {class = {'Alacritty', 'wemeet'}},
         properties = {titlebars_enabled = false}
     }
 }
