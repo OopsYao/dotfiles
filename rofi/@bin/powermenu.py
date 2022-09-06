@@ -14,7 +14,7 @@ chosen = os.popen(f"echo '{options_stdin}'"
                   f'| rofi -dmenu -i -p "LET\'S"'
                   f' -theme powermenu').read().strip()
 if chosen == options['sleep']:
-    os.system('systemctl suspend-then-hibernate')
+    os.system('systemctl suspend')
 elif chosen == options['switch-win']:
     os.system('sudo grub-reboot Windows && sudo set_hibernate_then_reboot.sh && systemctl hibernate')
 elif chosen == options['hibernate']:
