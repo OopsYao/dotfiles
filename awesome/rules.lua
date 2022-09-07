@@ -21,7 +21,7 @@ awful.rules.rules = {
                 'DTA', -- Firefox addon DownThemAll.
                 'pinentry'
             },
-            class = {'matplotlib', 'Matplotlib'},
+            class = {'matplotlib', 'Matplotlib', 'telegram-desktop', 'TelegramDesktop'},
             role = {
                 'pop-up' -- Google Chrome's (detached) Developer Tools.
             }
