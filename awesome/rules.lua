@@ -74,5 +74,11 @@ awful.rules.rules = {
         -- Picture in picture
         rule = {name = 'Picture in picture'},
         properties = {titlebars_enabled = false, floating = true, ontop = true}
-    }
+    }, {
+        -- Fix telegram viewer offset
+        -- https://github.com/awesomeWM/awesome/issues/3498#issuecomment-1147423543
+        -- Note that the behavior is related to the global placement of windows
+        rule = {name = 'Media viewer', class = 'TelegramDesktop'},
+        properties = { titlebars_enabled = false, fullscreen = false },
+    },
 }
