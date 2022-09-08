@@ -62,7 +62,7 @@ awful.rules.rules = {
         rule = {class = 'stalonetray'},
         properties = {below = true, focusable = false}
     }, {
-        rule = {class = 'mpv'},
+        rule_any = {class = {'mpv', 'Dragon-drop'}},
         properties = {titlebars_enabled = false, floating = true}
     }, {
         rule_any = {type = {'dialog', 'splash'}},
