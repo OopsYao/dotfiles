@@ -11,14 +11,15 @@ awful.rules.rules = {
             keys = keybindings.clientkeys,
             buttons = keybindings.clientbuttons,
             screen = awful.screen.preferred,
-            placement = awful.placement.no_offscreen
+            placement = awful.placement.centered + awful.placement.no_overlap +
+                awful.placement.no_offscreen,
         }
     }, {
-        -- Terminal app specially placed
-        rule_any = {class = {'Alacritty', 'kitty'}},
+        -- For some bad designed apps
+        -- Leave their placement alone!
+        rule_any = {class = {'wemeetapp'}},
         properties = {
-            placement = awful.placement.centered + awful.placement.no_overlap +
-                awful.placement.no_offscreen
+            placement = awful.placement.no_offscreen
         }
     }, -- Floating clients.
     {
