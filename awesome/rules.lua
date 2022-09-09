@@ -11,14 +11,14 @@ awful.rules.rules = {
             keys = keybindings.clientkeys,
             buttons = keybindings.clientbuttons,
             screen = awful.screen.preferred,
-            placement = awful.placement.no_offscreen,
+            placement = awful.placement.no_offscreen
         }
-    },
-    {
+    }, {
         -- Terminal app specially placed
         rule_any = {class = {'Alacritty', 'kitty'}},
         properties = {
-            placement = awful.placement.centered + awful.placement.no_overlap + awful.placement.no_offscreen
+            placement = awful.placement.centered + awful.placement.no_overlap +
+                awful.placement.no_offscreen
         }
     }, -- Floating clients.
     {
@@ -27,7 +27,10 @@ awful.rules.rules = {
                 'DTA', -- Firefox addon DownThemAll.
                 'pinentry'
             },
-            class = {'matplotlib', 'Matplotlib', 'telegram-desktop', 'TelegramDesktop'},
+            class = {
+                'matplotlib', 'Matplotlib', 'telegram-desktop',
+                'TelegramDesktop'
+            },
             role = {
                 'pop-up' -- Google Chrome's (detached) Developer Tools.
             }
@@ -63,7 +66,10 @@ awful.rules.rules = {
         properties = {below = true, focusable = false}
     }, {
         rule_any = {class = {'mpv', 'Dragon-drop'}},
-        properties = {titlebars_enabled = false, floating = true}
+        properties = {
+            titlebars_enabled = false, floating = true,
+            placement = awful.placement.centered,
+        },
     }, {
         rule_any = {type = {'dialog', 'splash'}},
         properties = {placement = awful.placement.centered}
@@ -79,6 +85,6 @@ awful.rules.rules = {
         -- https://github.com/awesomeWM/awesome/issues/3498#issuecomment-1147423543
         -- Note that the behavior is related to the global placement of windows
         rule = {name = 'Media viewer', class = 'TelegramDesktop'},
-        properties = { titlebars_enabled = false, fullscreen = false },
-    },
+        properties = {titlebars_enabled = false, fullscreen = false}
+    }
 }
