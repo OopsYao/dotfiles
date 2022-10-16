@@ -48,7 +48,6 @@ awesome.connect_signal(
     'startup', function(args)
         awful.util.spawn('systemctl --user start xsession.target')
         awful.util.spawn('dex -a -e awesome')
-        awful.util.spawn('sxhkd')
     end
 )
 
