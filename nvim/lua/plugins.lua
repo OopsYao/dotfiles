@@ -17,10 +17,16 @@ require('packer').startup({function()
     'hrsh7th/nvim-cmp',
     config = function() 
         vim.o.completeopt = 'menuone,noselect'
-        require'cmp'.setup {
+        local cmp = require'cmp'
+        cmp.setup {
             sources = {
                {name = 'nvim_lsp'}
-            }
+            },
+            mapping = cmp.mapping.preset.insert {
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<CR>'] = cmp.mapping.confirm { select = true },
+            },
         }
     end,
     requires = { 'hrsh7th/cmp-nvim-lsp' },
