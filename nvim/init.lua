@@ -6,6 +6,7 @@ setg {
   -- Leader key
   mapleader = ' ',
   tex_flavor = 'latex',
+  copilot_node_command = '~/.nvm/versions/node/v16.18.1/bin/node',
 }
 
 seto {
