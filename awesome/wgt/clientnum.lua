@@ -56,8 +56,11 @@ return function()
     }
     local update = function()
         local num = get_clients_number()
-        clientnum.text = ' ' .. num.minimized .. '/' .. num.all -
-                             num.minimized
+        if num.minimized == 0 then
+            clientnum.text = ''
+        else
+            clientnum.text = ' ' .. num.minimized
+        end
     end
 
     -- Update on signals
