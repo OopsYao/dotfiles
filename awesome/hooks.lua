@@ -10,7 +10,7 @@ awful.screen.connect_for_each_screen(
         local selected = true -- Set the first tag as selected
         for k, v in pairs(tags) do
             awful.tag
-                .add(v[1], {layout = v[2], screen = s, selected = selected})
+                .add(v[1], {layout = v[2], screen = s, master_count = 2, selected = selected, column_count = 1})
             selected = false
         end
 

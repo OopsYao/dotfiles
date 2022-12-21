@@ -3,11 +3,11 @@ local awful = require 'awful'
 
 -- Set available layouts
 local l = awful.layout.suit
-awful.layout.layouts = {l.floating, l.fair, l.corner.nw}
+awful.layout.layouts = {l.tile.bottom}
 
 return {
-    {'Misc 1', l.floating}, {'Web 1', l.floating}, {'Code 1', l.corner.nw},
-    {'Read 1', l.fair}, {'Music', l.floating}, {'Home', l.floating},
-    {'Read 2', l.fair}, {'Code 2', l.corner.nw}, {'Web 2', l.floating},
-    {'Misc 2', l.floating}
+    {'Misc 1', l.tile.bottom}, {'Web 1', l.tile.bottom}, {'Code 1', l.tile.bottom},
+    {'Read 1', l.tile.bottom}, {'Music', l.tile.bottom}, {'Home', l.tile.bottom},
+    {'Read 2', l.tile.bottom}, {'Code 2', l.tile.bottom}, {'Web 2', l.tile.bottom},
+    {'Misc 2', l.tile.bottom}
 }

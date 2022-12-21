@@ -8,7 +8,7 @@ local xresources = require('beautiful.xresources')
 local dpi = xresources.apply_dpi
 
 theme.useless_gap = dpi(4)
-theme.master_width_factor = 0.7
+theme.master_width_factor = 0.75
 
 theme.bg_normal = '#eeeeee'
 theme.bg_focus = '#2c3e67'
