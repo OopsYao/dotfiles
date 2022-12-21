@@ -46,7 +46,6 @@ awful.rules.rules = {
         rule = {role = 'browser'},
         properties = {
             screen = 1,
-            tag = 'Web 1',
             titlebars_enabled = false,
             placement = awful.placement.centered
         }
