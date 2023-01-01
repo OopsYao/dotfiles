@@ -29,8 +29,7 @@ awful.rules.rules = {
                 'pinentry'
             },
             class = {
-                'matplotlib', 'Matplotlib', 'telegram-desktop',
-                'TelegramDesktop'
+                'matplotlib', 'Matplotlib',
             },
             role = {
                 'pop-up' -- Google Chrome's (detached) Developer Tools.
