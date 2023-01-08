@@ -66,7 +66,7 @@ awful.rules.rules = {
     }, {
         rule_any = {class = {'mpv', 'Dragon-drop'}},
         properties = {
-            titlebars_enabled = false, floating = true,
+            titlebars_enabled = false, floating = true, above = true,
             placement = awful.placement.centered,
         },
     }, {
