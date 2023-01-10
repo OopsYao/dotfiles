@@ -11,4 +11,7 @@ feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
 export http_proxy="http://localhost:7890"
 export https_proxy="http://localhost:7890"
 
+# Local bin
+export PATH="$PATH:$HOME/.local/bin"
+
 sxhkd &
