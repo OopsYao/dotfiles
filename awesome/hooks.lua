@@ -60,6 +60,7 @@ end)
 client.connect_signal("unfocus", function(c)
     c.border_color = "#00000000"
     c.border_width = dpi(2)
+    c.fullscreen = false
 end)
 
 -- Handle runtime errors after startup
