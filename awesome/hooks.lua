@@ -51,6 +51,17 @@ awesome.connect_signal(
     end
 )
 
+
+-- Highlight focused client
+client.connect_signal("focus", function(c)
+    c.border_color = "#cec2ea"
+    c.border_width = dpi(2)
+end)
+client.connect_signal("unfocus", function(c)
+    c.border_color = "#00000000"
+    c.border_width = dpi(2)
+end)
+
 -- Handle runtime errors after startup
 do
     local in_error = false
