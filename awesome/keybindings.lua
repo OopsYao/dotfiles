@@ -226,21 +226,6 @@ keybindings.clientkeys = gears.table.join(
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end, {description = 'minimize', group = 'client'}
-    ), awful.key(
-        {modkey}, 'm', function(c)
-            c.maximized = not c.maximized
-            c:raise()
-        end, {description = '(un)maximize', group = 'client'}
-    ), awful.key(
-        {modkey, 'Control'}, 'm', function(c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end, {description = '(un)maximize vertically', group = 'client'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'm', function(c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end, {description = '(un)maximize horizontally', group = 'client'}
     )
 )
 
