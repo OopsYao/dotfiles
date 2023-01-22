@@ -40,55 +40,6 @@ local key = hotkey(awful.key)
 local button = hotkey(awful.button)
 
 local globalkeys = gears.table.join(
-    table.unpack(
-        gears.table.map(
-            key, {
-                {
-                    {modkey, 's'}, hotkeys_popup.show_help,
-                    {description = 'show help', group = 'awesome'}
-                }, -- Tag operations
-                {
-                    {modkey, 'Left'}, view_nonempty(-1),
-                    {description = 'view previous', group = 'tag'}
-                }, {
-                    {modkey, 'Right'}, view_nonempty(1),
-                    {description = 'view next', group = 'tag'}
-                }, {
-                    {modkey, 'Escape'}, awful.tag.history.restore,
-                    {description = 'go back', group = 'tag'}
-                }, -- Client navigating
-                {
-                    {modkey, 'h'}, navi_by_direction('left'),
-                    {description = 'focus left by direction', group = 'client'}
-                }, {
-                    {modkey, 'j'}, navi_by_direction('down'),
-                    {description = 'focus below by direction', group = 'client'}
-                }, {
-                    {modkey, 'k'}, navi_by_direction('up'),
-                    {description = 'focus above by direction', group = 'client'}
-                }, {
-                    {modkey, 'l'}, navi_by_direction('right'),
-                    {description = 'focus right by direction', group = 'client'}
-                }, {
-                    {modkey, 'Tab'}, function()
-                        awful.client.focus.byidx(1)
-                    end,
-                    {description = 'focus right by direction', group = 'client'}
-                }, {
-                    {modkey, 'Shift', 'Tab'},
-                    function() awful.client.focus.byidx(-1) end,
-                    {description = 'focus right by direction', group = 'client'}
-                }, {
-                    {modkey, 'Shift', 'Tab'},
-                    awful.client.focus.history.previous,
-                    {description = 'focus right by direction', group = 'client'}
-                } -- Client swapping
-            }
-        )
-    )
-)
-
-local globalkeys = gears.table.join(
     awful.key(
         {modkey}, 's', hotkeys_popup.show_help,
         {description = 'show help', group = 'awesome'}
