@@ -36,99 +36,110 @@ local hotkey = function(awful_func)
         )
     end
 end
-local key = hotkey(awful.key)
 local button = hotkey(awful.button)
 
-local globalkeys = gears.table.join(
-    awful.key(
-        {modkey}, 's', hotkeys_popup.show_help,
-        {description = 'show help', group = 'awesome'}
-    ), awful.key(
-        {modkey}, 'Left', view_nonempty(-1),
+local globalkeys = gears.table.map(function(hotkey)
+    local shortcut, operation, meta = table.unpack(hotkey)
+    return awful.key({table.unpack(shortcut, 1, #shortcut - 1)}, shortcut[#shortcut], operation, meta)
+end, {
+    {
+        {modkey, 's'},  hotkeys_popup.show_help,
+        {description = 'show help', group = 'awesome'},
+    },
+    {
+        {modkey, 'Left'}, view_nonempty(-1),
         {description = 'view previous', group = 'tag'}
-    ), awful.key(
-        {modkey}, 'Right', view_nonempty(1),
+    },
+    {
+        {modkey, 'Right'}, view_nonempty(-1),
         {description = 'view next', group = 'tag'}
-    ), key{
+    },
+    {
         {modkey, 'Escape'}, awful.tag.history.restore,
-        {description = 'go back', group = 'tag'}
-    }, -- awful.key(
-    --     {modkey}, 'Escape', awful.tag.history.restore,
-    --     {description = 'go back', group = 'tag'}
-    -- ),
-    -- Client navigating
-    awful.key(
-        {modkey}, 'j', navi_by_direction('down'),
+        {description = 'go back', group = 'tag'},
+    },
+    {
+        {modkey, 'j'}, navi_by_direction('down'),
         {description = 'focus below by direction', group = 'client'}
-    ), awful.key(
-        {modkey}, 'k', function()
-            awful.client.focus.bydirection('up', nil, false)
-            if client.focus then client.focus:raise() end
-        end, {description = 'focus above by direction', group = 'client'}
-    ), awful.key(
-        {modkey}, 'h', function()
-            awful.client.focus.bydirection('left', nil, false)
-            if client.focus then client.focus:raise() end
-        end, {description = 'focus left by direction', group = 'client'}
-    ), awful.key(
-        {modkey}, 'l', function()
-            awful.client.focus.bydirection('right', nil, false)
-            if client.focus then client.focus:raise() end
-        end, {description = 'focus right by direction', group = 'client'}
-    ), awful.key(
-        {modkey}, '`', function()
+    },
+    {
+        {modkey, 'k'}, navi_by_direction('up'),
+        {description = 'focus above by direction', group = 'client'}
+    },
+    {
+        {modkey, 'h'}, navi_by_direction('left'),
+        {description = 'focus left by direction', group = 'client'}
+    },
+    {
+        {modkey, 'l'}, navi_by_direction('right'),
+        {description = 'focus right by direction', group = 'client'}
+    },
+    {
+        {modkey, '`'}, function()
             awful.client.focus.history.previous()
             if client.focus then client.focus:raise() end
         end, {description = 'go back', group = 'client'}
-    ), awful.key(
-        {modkey}, 'Tab', function() awful.client.focus.byidx(1) end,
+    },
+    {
+        {modkey, 'Tab'}, function() awful.client.focus.byidx(1) end,
         {description = 'focus next by index', group = 'client'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'Tab', function() awful.client.focus.byidx(-1) end,
+    },
+    {
+        {modkey, 'Shift', 'Tab'}, function() awful.client.focus.byidx(-1) end,
         {description = 'focus previous by index', group = 'client'}
-    ), awful.key(
-        {modkey}, 'u', awful.client.urgent.jumpto,
+    },
+    {
+        {modkey, 'u'}, awful.client.urgent.jumpto,
         {description = 'jump to urgent client', group = 'client'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'j',
+    },
+    {
+        {modkey, 'Shift', 'j'},
         function() awful.client.swap.bydirection('down') end,
         {description = 'swap with below client', group = 'client'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'k',
+    },
+    {
+        {modkey, 'Shift', 'k'},
         function() awful.client.swap.bydirection('up') end,
-        {description = 'swap with above client', group = 'client'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'h',
+        {description = 'swap with above client', group = 'client'},
+    },
+    {
+        {modkey, 'Shift', 'h'},
         function() awful.client.swap.bydirection('left') end,
-        {description = 'swap with left client', group = 'client'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'l',
+        {description = 'swap with left client', group = 'client'},
+    },
+    {
+        {modkey, 'Shift', 'l'},
         function() awful.client.swap.bydirection('right') end,
         {description = 'swap with right client', group = 'client'}
-    ), -- Standard program
-    awful.key(
-        {modkey, 'Control'}, 'r', awesome.restart,
+    }, -- Standard program
+    {
+        {modkey, 'Control', 'r'}, awesome.restart,
         {description = 'reload awesome', group = 'awesome'}
-    ), awful.key(
-        {modkey, 'Shift', 'Control'}, 'q', awesome.quit,
+    },
+    {
+        {modkey, 'Shift', 'Control', 'q'}, awesome.quit,
         {description = 'quit awesome', group = 'awesome'}
-    ), -- Layout manipulation
-    awful.key(
-        {modkey, 'Control'}, 'h',
+    }, -- Layout manipulation
+    {
+        {modkey, 'Control', 'h'},
         function() awful.tag.incncol(1, nil, true) end,
         {description = 'increase the number of columns', group = 'layout'}
-    ), awful.key(
-        {modkey, 'Control'}, 'l',
+    },
+    {
+        {modkey, 'Control', 'l'},
         function() awful.tag.incncol(-1, nil, true) end,
         {description = 'decrease the number of columns', group = 'layout'}
-    ), awful.key(
-        {modkey}, 'space', function() awful.layout.inc(1) end,
+    },
+    {
+        {modkey, 'space'}, function() awful.layout.inc(1) end,
         {description = 'select next', group = 'layout'}
-    ), awful.key(
-        {modkey, 'Shift'}, 'space', function() awful.layout.inc(-1) end,
+    },
+    {
+        {modkey, 'Shift', 'space'}, function() awful.layout.inc(-1) end,
         {description = 'select previous', group = 'layout'}
-    ), awful.key(
-        {modkey, 'Control'}, 'n', function()
+    },
+    {
+        {modkey, 'Control', 'n'}, function()
             local c = awful.client.restore()
             -- Focus restored client
             if c then
@@ -137,8 +148,9 @@ local globalkeys = gears.table.join(
                 )
             end
         end, {description = 'restore minimized', group = 'client'}
-    ), awful.key(
-        {modkey, 'Control', 'Shift'}, 'n', function()
+    },
+    {
+        {modkey, 'Control', 'Shift', 'n'}, function()
             while (true) do
                 local c = awful.client.restore()
                 if c then
@@ -150,8 +162,10 @@ local globalkeys = gears.table.join(
                 end
             end
         end, {description = 'restore all minimized', group = 'client'}
-    )
-)
+    }
+})
+globalkeys = gears.table.join(table.unpack(globalkeys))
+
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
