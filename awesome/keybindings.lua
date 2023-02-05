@@ -111,6 +111,16 @@ end, {
         {modkey, 'Shift', 'l'},
         function() awful.client.swap.bydirection('right') end,
         {description = 'swap with right client', group = 'client'}
+    },
+    {
+        {modkey, 'Control', 'l'},
+        function(c) awful.client.incwfact(0.02, c) end,
+        {description = 'increase window width factor', group = 'client'}
+    },
+    {
+        {modkey, 'Control', 'h'},
+        function(c) awful.client.incwfact(-0.02, c) end,
+        {description = 'decrease window width factor', group = 'client'}
     }, -- Standard program
     {
         {modkey, 'Control', 'r'}, awesome.restart,
@@ -121,13 +131,19 @@ end, {
         {description = 'quit awesome', group = 'awesome'}
     }, -- Layout manipulation
     {
-        {modkey, 'Control', 'h'},
-        function() awful.tag.incncol(1, nil, true) end,
+        {modkey, 'Control', 'k'},
+        function() awful.tag.incnmaster(1, nil, true) end,
         {description = 'increase the number of columns', group = 'layout'}
     },
     {
-        {modkey, 'Control', 'l'},
-        function() awful.tag.incncol(-1, nil, true) end,
+        {modkey, 'Control', 'j'},
+        function()
+            -- Avoid zero master window
+            local t = awful.screen.focused().selected_tag
+            if t.master_count > 1 then
+                awful.tag.incnmaster(-1, nil, true)
+            end
+        end,
         {description = 'decrease the number of columns', group = 'layout'}
     },
     {
