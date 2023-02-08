@@ -22,8 +22,7 @@ nvim_lsp.pylsp.setup {
 
 nvim_lsp.efm.setup{
     on_attach = on_attach,
-    filetypes = {'lua', 'yaml', 'javascript'},
-    capabilities = capabilities,
+    init_options = {documentFormatting = true},
 }
 
 -- YAML

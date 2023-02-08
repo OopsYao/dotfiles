@@ -1,7 +1,7 @@
 version: 2
 languages:
   lua:
-    - format-command: lua-format -i
+    - format-command: stylua --search-parent-directories -
       format-stdin: true
   yaml:
     - format-command: ~/.local/bin/prettier --stdin-filepath ${INPUT}
