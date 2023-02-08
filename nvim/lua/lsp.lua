@@ -46,7 +46,6 @@ require("lspconfig").texlab.setup {
   settings = {
     texlab = {
       build = {
-        args = { "-xelatex", "-shell-escape", "-interaction=nonstopmode", "-synctex=1", "%f" },
         onSave = true,
       },
       chktex = {
