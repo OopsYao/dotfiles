@@ -1,12 +1,12 @@
-local seto = require'utils'.setopt('o')
-local setg = require'utils'.setopt('g')
-local keymap = require'utils'.keymap{ noremap = true, silent = true }
+local seto = require("utils").setopt "o"
+local setg = require("utils").setopt "g"
+local keymap = require("utils").keymap { noremap = true, silent = true }
 
 setg {
   -- Leader key
-  mapleader = ' ',
-  tex_flavor = 'latex',
-  copilot_node_command = '~/.nvm/versions/node/v16.18.1/bin/node',
+  mapleader = " ",
+  tex_flavor = "latex",
+  copilot_node_command = "~/.nvm/versions/node/v16.18.1/bin/node",
 }
 
 seto {
@@ -22,22 +22,22 @@ seto {
   tabstop = 4,
   shiftwidth = 4,
   list = true,
-  listchars = 'tab:⍿▸,trail:·',
+  listchars = "tab:⍿▸,trail:·",
 
   -- Hide unused buffer (for barbar.nvim navigation)
   hidden = true,
 
   -- Mouse
-  mouse = 'a',
+  mouse = "a",
 
   -- Use gui colors
   termguicolors = true,
 
   -- Hide tilde
-  fillchars = 'eob: ',
+  fillchars = "eob: ",
 
   -- Alaways show sign column
-  signcolumn = 'yes',
+  signcolumn = "yes",
 
   -- Confirm dialog when necessary
   confirm = true,
@@ -48,15 +48,14 @@ seto {
 
 keymap {
   -- Clear highlight
-  { 'n', '<esc>', ':noh<CR><esc>' },
-  { 'n', '<leader>w', '<C-w>' },
+  { "n", "<esc>", ":noh<CR><esc>" },
+  { "n", "<leader>w", "<C-w>" },
   -- Exit terminal mode
-  { 't', '<C-\\>', '<C-\\><C-N>' },
+  { "t", "<C-\\>", "<C-\\><C-N>" },
 }
 
-
 -- Plugins
-require 'plugins'
+require "plugins"
 
 -- Disable line number in terminal mode
-vim.cmd 'au TermOpen * setlocal nonumber norelativenumber'
+vim.cmd "au TermOpen * setlocal nonumber norelativenumber"
