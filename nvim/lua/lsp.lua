@@ -55,3 +55,31 @@ require'lspconfig'.texlab.setup {
     },
     capabilities = capabilities,
 }
+
+-- Lua
+require'lspconfig'.sumneko_lua.setup {
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+          runtime = {
+            version = 'LuaJIT',
+          },
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = {'vim'},
+          },
+          workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = vim.api.nvim_get_runtime_file("", true),
+            -- Do not prompt for working environment
+            -- https://github.com/neovim/nvim-lspconfig/issues/1700
+            checkThirdParty = false,
+          },
+          format = {
+              -- https://github.com/LuaLS/lua-language-server/wiki/Formatter
+              -- Custom config doesnot work, use stylua via efm instead
+              enable = false,
+          }
+        },
+  },
+}
