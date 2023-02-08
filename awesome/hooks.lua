@@ -51,11 +51,11 @@ awesome.connect_signal(
 -- Highlight focused client
 client.connect_signal("focus", function(c)
     c.border_color = "#F27F0C"
-    c.border_width = dpi(2)
+    c.border_width = dpi(3)
 end)
 client.connect_signal("unfocus", function(c)
     c.border_color = "#00000000"
-    c.border_width = dpi(2)
+    c.border_width = dpi(3)
     c.fullscreen = false
 end)
 
