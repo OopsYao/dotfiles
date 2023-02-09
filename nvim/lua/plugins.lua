@@ -62,6 +62,10 @@ require("packer").startup {
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("gitsigns").setup {
+         -- Due to the limitation of nvim, there is no perfect way
+         -- to display gitsigns and dignostic marks at the same time,
+         -- hence display gitsigns only if both activated.
+          sign_priority = 100,
           current_line_blame = true,
           on_attach = function(bufnr)
             local gs = package.loaded.gitsigns
