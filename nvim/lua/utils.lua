@@ -1,13 +1,13 @@
-module = {}
+local module = {}
 
 function module.keymap(opts)
-  local set_keymap = vim.api.nvim_set_keymap
+    -- Recieves a table as options for keymapping, and returns a
+    -- function that receives a table of keymappings to set.
   return function(config)
     for _, v in pairs(config) do
-      local mode = v[1]
-      local key = v[2]
-      local action = v[3]
-      set_keymap(mode, key, action, opts)
+      local mode, key, action = unpack(v)
+      -- About the keymap settings, see :h lua-guide-mappings
+      vim.keymap.set(mode, key, action, opts)
     end
   end
 end
