@@ -52,6 +52,10 @@ keymap {
   { "n", "<leader>w", "<C-w>" },
   -- Exit terminal mode
   { "t", "<C-\\>", "<C-\\><C-N>" },
+  -- Nvim diagnostics
+  { "n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
+  { "n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
+  { "n", "<leader>dd", vim.diagnostic.open_float, { desc = "Display diagnostic info in float text" } },
 }
 
 -- Plugins
