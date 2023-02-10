@@ -15,3 +15,6 @@ languages:
       lint-formats:
         - '%f(%l,%c): %tarning %m'
         - '%f(%l,%c): %rror %m'
+  zsh:
+    - format-command: shfmt -i 2 -ci -s -bn
+      format-stdin: true
