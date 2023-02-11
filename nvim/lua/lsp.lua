@@ -1,11 +1,25 @@
 -- LSP
 -- for lspconfig doc see `:h lspconfig`
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  -- https://github.com/neovim/nvim-lspconfig/issues/1891#issuecomment-1157964108
+  if client.server_capabilities.documentFormattingProvider then
+    -- Format by shortcut
+    vim.keymap.set("n", "<leader>f", function()
+      vim.lsp.buf.format { async = true, buffer = bufnr }
+    end, { silent = true, desc = "Format code (async)" })
+
+    -- Format on close
+    local id = vim.api.nvim_create_augroup("Format", {})
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      group = id,
+      callback = function()
+        -- The callback takes an argument,
+        -- so setting callback = vim.lsp.buf.format will not work.
+        -- :h lua-guide-autocommands-create
+        vim.lsp.buf.format()
+      end,
+    })
   end
-  local opts = { noremap = true, silent = true }
-  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format{async=true}<CR>", opts)
 end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local nvim_lsp = require "lspconfig"
