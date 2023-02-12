@@ -72,7 +72,7 @@ require("lspconfig").texlab.setup {
 }
 
 -- Lua
-require("lspconfig").sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
   on_attach = on_attach,
   settings = {
     Lua = {
