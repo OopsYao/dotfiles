@@ -5,7 +5,7 @@ vim.cmd [[
   augroup end
 ]]
 require("packer").startup {
-  function()
+  function(use)
     use {
       "catppuccin/nvim",
       as = "catppuccin",
