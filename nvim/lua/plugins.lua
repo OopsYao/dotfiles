@@ -6,8 +6,6 @@ vim.cmd [[
 ]]
 require("packer").startup {
   function()
-    use { "dracula/vim", as = "dracula" }
-    use { "sonph/onehalf", rtp = "vim/" }
     use { "folke/tokyonight.nvim", branch = "main" }
     use {
       "projekt0n/github-nvim-theme",
@@ -62,9 +60,9 @@ require("packer").startup {
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("gitsigns").setup {
-         -- Due to the limitation of nvim, there is no perfect way
-         -- to display gitsigns and dignostic marks at the same time,
-         -- hence display gitsigns only if both activated.
+          -- Due to the limitation of nvim, there is no perfect way
+          -- to display gitsigns and dignostic marks at the same time,
+          -- hence display gitsigns only if both activated.
           sign_priority = 100,
           current_line_blame = true,
           on_attach = function(bufnr)
@@ -105,16 +103,6 @@ require("packer").startup {
         }
       end,
     }
-    use {
-      "kevinhwang91/rnvimr",
-      branch = "main",
-      config = function()
-        local keymap = require("utils").keymap { noremap = true, silent = true }
-        keymap {
-          { "n", "<C-n>", ":RnvimrToggle<CR>" },
-        }
-      end,
-    } -- File explorer
     use {
       "lukas-reineke/indent-blankline.nvim",
       config = function()
