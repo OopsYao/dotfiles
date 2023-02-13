@@ -6,11 +6,11 @@ vim.cmd [[
 ]]
 require("packer").startup {
   function()
-    use { "folke/tokyonight.nvim", branch = "main" }
     use {
-      "projekt0n/github-nvim-theme",
+      "catppuccin/nvim",
+      as = "catppuccin",
       config = function()
-        require "colors"
+        vim.cmd.colorscheme "catppuccin"
       end,
     }
     use {
