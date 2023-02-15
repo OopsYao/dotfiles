@@ -56,7 +56,12 @@ nvim_lsp.yamlls.setup {
 
 -- LaTeX
 require("lspconfig").texlab.setup {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    -- Disable formatting, use efm instead
+    -- Texlab rewrites buffer even without changes, still not sure why
+    client.server_capabilities.documentFormattingProvider = false
+    on_attach(client, bufnr)
+  end,
   settings = {
     texlab = {
       build = {
@@ -68,7 +73,6 @@ require("lspconfig").texlab.setup {
       },
     },
   },
-  capabilities = capabilities,
 }
 
 -- Lua
