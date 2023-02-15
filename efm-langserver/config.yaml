@@ -21,3 +21,6 @@ languages:
   tex:
     - format-command: latexindent
       format-stdin: true
+  bib:
+    - format-command: bibtex-tidy --curly --sort --sort-fields --trailing-commas --wrap --drop-all-caps -
+      format-stdin: true
