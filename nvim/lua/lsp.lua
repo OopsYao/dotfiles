@@ -21,6 +21,9 @@ local on_attach = function(client, bufnr)
     })
   end
 end
+-- Language server provide different completion results depending on the
+-- capabilities of the client. Besides the LSP source for nvim-cmp, cmp-nvim-lsp
+-- also provides the capabilities supported by nvim-cmp.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local nvim_lsp = require "lspconfig"
 
@@ -39,6 +42,7 @@ nvim_lsp.pylsp.setup {
 nvim_lsp.efm.setup {
   on_attach = on_attach,
   init_options = { documentFormatting = true },
+  capabilities = capabilities,
 }
 
 -- YAML
@@ -56,6 +60,7 @@ nvim_lsp.yamlls.setup {
 
 -- LaTeX
 require("lspconfig").texlab.setup {
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Disable formatting, use efm instead
     -- Texlab rewrites buffer even without changes, still not sure why
@@ -77,6 +82,7 @@ require("lspconfig").texlab.setup {
 
 -- Lua
 nvim_lsp.lua_ls.setup {
+  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     Lua = {
