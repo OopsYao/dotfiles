@@ -51,6 +51,13 @@ require("packer").startup {
       end,
     }
     use {
+      -- Auto pairs
+      "windwp/nvim-autopairs",
+      config = function()
+        require("nvim-autopairs").setup {}
+      end,
+    }
+    use {
       "terrortylor/nvim-comment",
       branch = "main",
       config = function()
