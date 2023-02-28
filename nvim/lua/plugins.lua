@@ -27,6 +27,7 @@ require("packer").startup {
         cmp.setup {
           sources = {
             { name = "nvim_lsp" },
+            { name = "nvim_lua" },
           },
           mapping = cmp.mapping.preset.insert {
             ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -35,7 +36,8 @@ require("packer").startup {
           },
         }
       end,
-      requires = { "hrsh7th/cmp-nvim-lsp" },
+      -- cmp-nvim-lsp provides the LSP source
+      requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
     } -- Auto completion
     use {
       "nvim-treesitter/nvim-treesitter",
