@@ -83,7 +83,19 @@ require("packer").startup {
       -- Auto pairs
       "windwp/nvim-autopairs",
       config = function()
-        require("nvim-autopairs").setup {}
+        local npairs = require "nvim-autopairs"
+        npairs.setup {}
+        local Rule = require "nvim-autopairs.rule"
+        npairs.add_rules {
+          Rule("\\(", "\\)", "tex"),
+          Rule("\\[", "\\]", "tex"),
+          Rule("\\left(", "\\right)", "tex"),
+          Rule("\\left[", "\\right]", "tex"),
+          Rule("\\left\\{", "\\right\\}", "tex"),
+          Rule("\\langle", "\\rangle", "tex"),
+          Rule("\\lvert", "\\rvert", "tex"),
+          Rule("\\lVert", "\\rVert", "tex"),
+        }
       end,
     }
     use {
