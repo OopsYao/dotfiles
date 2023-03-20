@@ -95,6 +95,14 @@ require("packer").startup {
           Rule("\\langle", "\\rangle", "tex"),
           Rule("\\lvert", "\\rvert", "tex"),
           Rule("\\lVert", "\\rVert", "tex"),
+          Rule("\\(", "\\)", "markdown"),
+          Rule("\\[", "\\]", "markdown"),
+          Rule("\\left(", "\\right)", "markdown"),
+          Rule("\\left[", "\\right]", "markdown"),
+          Rule("\\left\\{", "\\right\\}", "markdown"),
+          Rule("\\langle", "\\rangle", "markdown"),
+          Rule("\\lvert", "\\rvert", "markdown"),
+          Rule("\\lVert", "\\rVert", "markdown"),
         }
       end,
     }
