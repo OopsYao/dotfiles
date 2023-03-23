@@ -38,7 +38,6 @@ awful.screen.connect_for_each_screen(function(s)
         {
           layout = wibox.layout.fixed.horizontal,
           spacing = dpi(8),
-          require "wgt.player" {},
           require "wgt.clientnum" {},
           -- require 'awesome-wm-widgets.github-activity-widget.github-activity-widget' {
           --     username = 'OopsYao'
