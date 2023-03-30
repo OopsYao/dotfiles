@@ -156,9 +156,6 @@ require("packer").startup {
           { "n", "<C-s>", ":BufferPick<CR>" }, -- Buffer-picking mode
           { "t", "<C-s>", "<C-\\><C-n>:BufferPick<CR>" },
         }
-        vim.g.bufferline = {
-          auto_hide = true,
-        }
       end,
     }
     use {
