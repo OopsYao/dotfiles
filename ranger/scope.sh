@@ -133,10 +133,13 @@ handle_image() {
             exit 1;;
 
         ## DjVu
-        # image/vnd.djvu)
-        #     ddjvu -format=tiff -quality=90 -page=1 -size="${DEFAULT_SIZE}" \
-        #           - "${IMAGE_CACHE_PATH}" < "${FILE_PATH}" \
-        #           && exit 6 || exit 1;;
+        ## Handle djvu explicity, otherwise the `identify` command is used,
+        ## of which there is memory leak issue.
+        ## https://github.com/ranger/ranger/issues/1815
+        image/vnd.djvu)
+            ddjvu -format=tiff -quality=90 -page=1 -size="${DEFAULT_SIZE}" \
+                  - "${IMAGE_CACHE_PATH}" < "${FILE_PATH}" \
+                  && exit 6 || exit 1;;
 
         ## Image
         image/*)
