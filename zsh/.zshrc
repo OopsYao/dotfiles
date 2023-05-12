@@ -9,8 +9,6 @@ source $ZSH/oh-my-zsh.sh
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-export EDITOR='nvr -s --remote-wait-silent'
-
 # Proxy
 proxy_socks="socks5://localhost:7891"
 proxy_http="http://localhost:7890"
