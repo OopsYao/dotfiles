@@ -20,6 +20,7 @@ awful.rules.rules = {
     rule_any = { class = { "wemeetapp" } },
     properties = {
       placement = awful.placement.no_offscreen,
+      floating = true,
     },
   }, -- Floating clients.
   {
