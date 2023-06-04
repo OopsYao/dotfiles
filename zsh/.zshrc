@@ -57,6 +57,10 @@ venv() {
         && alias deactivate="conda deactivate && unalias deactivate"
     fi
 }
+# Activate pyvenv if possible
+if [[ -f "./.venv/pyvenv.cfg" ]]; then
+    venv
+fi
 
 # Greeting
 if [[ -o login ]] then else
