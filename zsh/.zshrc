@@ -66,10 +66,13 @@ fi
 if [[ -o login ]] then else
     if command -v neofetch &> /dev/null
     then
-        if [[ "$TERM" == "xterm-kitty" ]] then
-            neofetch --backend kitty
-        else
-            neofetch
+        # Only for home directory
+        if [[ "$HOME" == "$(pwd)" ]] then
+            if [[ "$TERM" == "xterm-kitty" ]] then
+                neofetch --backend kitty
+            else
+                neofetch
+            fi
         fi
     fi
 fi
