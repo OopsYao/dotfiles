@@ -210,16 +210,6 @@ require("packer").startup {
       end,
     }
     use {
-      "github/copilot.vim",
-      config = function()
-        require("utils").setopt "g" {
-          copilot_filetypes = {
-            markdown = true,
-          },
-        }
-      end,
-    }
-    use {
       "iamcco/markdown-preview.nvim",
       run = function()
         vim.fn["mkdp#util#install"]()
