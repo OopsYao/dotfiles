@@ -1,0 +1,8 @@
+[Unit]
+Description=An input method framework with extension support
+
+[Service]
+ExecStart=/usr/bin/fcitx5
+
+[Install]
+WantedBy=graphical-session.target
