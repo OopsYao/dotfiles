@@ -24,7 +24,7 @@ super + d
 
 # Terminal
 super + Return
-    spawn-alacritty-cwd
+    alacritty --working-directory "$(xcwd)"
 
 # Powermenu
 super + p
