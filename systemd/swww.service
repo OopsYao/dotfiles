@@ -1,0 +1,10 @@
+[Unit]
+Description=A Solution to your Wayland Wallpaper Woes
+PartOf=wayland-session.target
+After=wayland-session.target
+
+[Service]
+ExecStart=/usr/bin/swww init
+
+[Install]
+WantedBy=wayland-session.target
