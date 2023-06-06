@@ -1,11 +1,12 @@
 [Unit]
 Description=Simple X hotkey daemon
-PartOf=graphical-session.target
-After=graphical-session.target
+PartOf=xsession.target
+After=xsession.target
 
 [Service]
-ExecStart=/usr/bin/sxhkd
+# Use bash with lc flag to inherit environment variables
+ExecStart=/usr/bin/bash -lc sxhkd
 OOMPolicy=continue
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=xsession.target

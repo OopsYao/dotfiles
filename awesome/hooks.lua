@@ -31,7 +31,13 @@ end)
 -- On startup
 awesome.connect_signal("startup", function(args)
   awful.util.spawn "systemctl --user start xsession.target"
-  awful.util.spawn "dex -a -e awesome"
+end)
+
+-- On exit
+awesome.connect_signal("exit", function(reason_restart)
+  if not reason_restart then
+    awful.util.spawn "systemctl --user stop xsession.target"
+  end
 end)
 
 -- Highlight focused client
