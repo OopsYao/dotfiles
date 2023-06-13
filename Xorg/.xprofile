@@ -13,5 +13,3 @@ export https_proxy="http://localhost:7890"
 
 # Local bin
 export PATH="$PATH:$HOME/.local/bin"
-
-sxhkd &
