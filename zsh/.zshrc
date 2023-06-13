@@ -82,3 +82,9 @@ fi
 
 # Update system and neovim plugins
 alias btw="yay && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'"
+
+# Pyenv https://github.com/pyenv/pyenv
+if command -v pyenv &> /dev/null
+then
+    eval "$(pyenv init -)"
+fi
