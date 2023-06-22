@@ -3,6 +3,7 @@ Description=Automounter for removable media
 
 [Service]
 ExecStart=/usr/bin/udiskie
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=default.target

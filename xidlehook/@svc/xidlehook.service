@@ -5,6 +5,7 @@ After=graphical-session.target
 
 [Service]
 ExecStart=%h/.local/bin/start_xidlehook.sh
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=graphical-session.target

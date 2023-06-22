@@ -10,6 +10,7 @@ ExecStart=/bin/sh -c "pactl subscribe | pulse_watcher.py | xob"
 # a workaround.
 Restart=always
 RestartSec=1
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=graphical-session.target

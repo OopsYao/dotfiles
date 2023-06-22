@@ -3,6 +3,7 @@ Description=Aria2 Daemon
 
 [Service]
 ExecStart=/usr/bin/aria2c
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=default.target

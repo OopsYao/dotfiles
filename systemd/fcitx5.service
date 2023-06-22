@@ -5,6 +5,7 @@ After=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/fcitx5
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=graphical-session.target

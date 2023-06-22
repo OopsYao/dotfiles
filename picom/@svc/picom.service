@@ -5,6 +5,7 @@ After=xsession.target
 
 [Service]
 ExecStart=/usr/bin/picom
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=xsession.target

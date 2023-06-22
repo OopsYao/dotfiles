@@ -5,6 +5,7 @@ After=wayland-session.target
 
 [Service]
 ExecStart=/usr/bin/swww init
+OOMScoreAdjust=-1000
 
 [Install]
 WantedBy=wayland-session.target
