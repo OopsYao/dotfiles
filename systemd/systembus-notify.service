@@ -1,0 +1,11 @@
+[Unit]
+Description=System bus notification daemon
+PartOf=graphical.target
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/systembus-notify
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=graphical-session.target
