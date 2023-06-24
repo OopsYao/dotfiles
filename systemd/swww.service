@@ -4,7 +4,7 @@ PartOf=wayland-session.target
 After=wayland-session.target
 
 [Service]
-ExecStart=/usr/bin/swww init
+ExecStart=/usr/bin/swww-daemon
 OOMScoreAdjust=-1000
 
 [Install]
