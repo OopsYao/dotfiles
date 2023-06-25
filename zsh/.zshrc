@@ -68,10 +68,14 @@ if [[ -o login ]] then else
     then
         # Only for home directory
         if [[ "$HOME" == "$(pwd)" ]] then
-            if [[ "$TERM" == "xterm-kitty" ]] then
-                neofetch --backend kitty
+            if [[ "$XDG_SESSION_TYPE" == "wayland" ]] then
+                neofetch --backend catimg
             else
-                neofetch
+                if [[ "$TERM" == "xterm-kitty" ]] then
+                    neofetch --backend kitty
+                else
+                    neofetch
+                fi
             fi
         fi
     fi
