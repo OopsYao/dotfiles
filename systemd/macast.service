@@ -1,9 +1,12 @@
 [Unit]
 Description=A cross-platform application which using mpv as DLNA Media Renderer.
+PartOf=graphical-session.target
+After=graphical-session.target
 
 [Service]
+Type=idle
 ExecStart=/usr/bin/macast-gui
 OOMScoreAdjust=-1000
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target
