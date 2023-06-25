@@ -26,7 +26,6 @@ alias clip="xclip -selection clipboard"
 
 mkfile() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
 alias e="nvim"
-alias rgr="ranger"
 alias cat="bat"
 alias ls="exa --icons"
 alias plz="sudo"
@@ -92,3 +91,12 @@ if command -v pyenv &> /dev/null
 then
     eval "$(pyenv init -)"
 fi
+
+# Ranger with image preview method setting
+rgr() {
+    if [[ "$TERM" == "xterm-kitty" ]] then
+        ranger --cmd="set preview_images_method kitty"
+    else
+        ranger
+    fi
+}
