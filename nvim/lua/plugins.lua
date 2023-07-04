@@ -221,6 +221,16 @@ require("packer").startup {
         require("zen-mode").setup {}
       end,
     }
+    -- Neovim config for SyncTeX inverse search
+    use {
+      "f3fora/nvim-texlabconfig",
+      config = function()
+        require("texlabconfig").setup {}
+      end,
+      -- Build nvim-texlabconfig executable to plugin dir by default
+      -- Must include `nvim-texlabconfig` in path
+      run = "go build -o ~/.local/bin",
+    }
   end,
   config = {
     display = {

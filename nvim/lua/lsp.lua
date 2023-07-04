@@ -66,15 +66,32 @@ require("lspconfig").texlab.setup {
     -- Texlab rewrites buffer even without changes, still not sure why
     client.server_capabilities.documentFormattingProvider = false
     on_attach(client, bufnr)
+    vim.keymap.set("n", "<leader>s", "<cmd>TexlabForward<cr>", { silent = true, desc = "SyncTeX forward search" })
   end,
   settings = {
     texlab = {
       build = {
         onSave = true,
+        forwardSearchAfter = true, -- Do forward search after build
       },
       chktex = {
         onEdit = true,
         onOpenAndSave = true,
+      },
+      forwardSearch = {
+        executable = "sioyek",
+        args = {
+          "--reuse-window",
+          "--execute-command",
+          "toggle_synctex",
+          "--inverse-search",
+          [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
+          "--forward-search-file",
+          "%f",
+          "--forward-search-line",
+          "%l",
+          "%p",
+        },
       },
     },
   },
