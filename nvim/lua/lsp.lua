@@ -82,8 +82,6 @@ require("lspconfig").texlab.setup {
         executable = "sioyek",
         args = {
           "--reuse-window",
-          "--execute-command",
-          "toggle_synctex",
           "--inverse-search",
           [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
           "--forward-search-file",
