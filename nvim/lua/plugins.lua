@@ -130,12 +130,15 @@ require("packer").startup {
               opts.buffer = bufnr
               vim.keymap.set(mode, l, r, opts)
             end
-            map("n", "<leader>hp", gs.preview_hunk)
-            map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-            map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-            map("n", "<leader>hu", gs.undo_stage_hunk)
-            map("n", "<leader>hS", gs.stage_buffer)
-            map("n", "<leader>hR", gs.reset_buffer)
+            map("n", "<leader>hp", gs.preview_hunk, { desc = "Gitsigns preview hunk" })
+            map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Gitsigns stage hunk" })
+            map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "Gitsigns reset hunk" })
+            map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Gitsigns undo stage hunk" })
+            map("n", "<leader>hS", gs.stage_buffer, { desc = "Gitsigns stage buffer" })
+            map("n", "<leader>hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
+            map("n", "<leader>hj", gs.next_hunk, { desc = "Gitsigns next hunk" })
+            map("n", "<leader>hk", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
+            map("n", "<leader>hd", gs.diffthis, { desc = "Gitsigns diff this" })
           end,
         }
       end,
