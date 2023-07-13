@@ -34,6 +34,7 @@ alias please="sudo"
 # Fix issues on some remotes as then do not recognize alacritty
 alias ssh="TERM=xterm-256color ssh"
 alias lzd="lazydocker"
+alias rgr="ranger"
 
 if command -v thefuck &> /dev/null
 then
@@ -91,12 +92,3 @@ if command -v pyenv &> /dev/null
 then
     eval "$(pyenv init -)"
 fi
-
-# Ranger with image preview method setting
-rgr() {
-    if [[ "$TERM" == "xterm-kitty" ]] then
-        ranger --cmd="set preview_images_method kitty"
-    else
-        ranger
-    fi
-}
