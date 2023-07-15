@@ -1,0 +1,12 @@
+[Unit]
+Description=AirPlay Unix mirroring server
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/uxplay
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=graphical-session.target
