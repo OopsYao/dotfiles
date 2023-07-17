@@ -1,12 +1,17 @@
 -- LSP
 -- for lspconfig doc see `:h lspconfig`
 local on_attach = function(client, bufnr)
+  -- Check if buffer variable disable_format exists
+  local status, disable = pcall(function()
+    return vim.api.nvim_buf_get_var(bufnr, "disable_format")
+  end)
+  local disable_format = status and disable
   -- https://github.com/neovim/nvim-lspconfig/issues/1891#issuecomment-1157964108
-  if client.server_capabilities.documentFormattingProvider then
+  if client.server_capabilities.documentFormattingProvider and not disable_format then
     -- Format by shortcut
     vim.keymap.set("n", "<leader>f", function()
       vim.lsp.buf.format { async = true, buffer = bufnr }
-    end, { silent = true, desc = "Format code (async)" })
+    end, { silent = true, desc = "Format code (async)", buffer = bufnr })
 
     -- Format on close
     local id = vim.api.nvim_create_augroup("Format", {})
@@ -18,6 +23,7 @@ local on_attach = function(client, bufnr)
         -- :h lua-guide-autocommands-create
         vim.lsp.buf.format()
       end,
+      buffer = bufnr,
     })
   end
 end
@@ -123,3 +129,16 @@ nvim_lsp.lua_ls.setup {
     },
   },
 }
+
+-- If global variable `disable_latex_format` exists,
+-- then set `disable_format` variable for tex buffers.
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+  group = vim.api.nvim_create_augroup("Disable LaTeX formatting", {}),
+  pattern = { "*.tex" },
+  callback = function(ev)
+    if vim.g.disable_latex_format then
+      vim.api.nvim_buf_set_var(ev.buf, "disable_format", true)
+      return true
+    end
+  end,
+})

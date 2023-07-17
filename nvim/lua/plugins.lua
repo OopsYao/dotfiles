@@ -235,6 +235,12 @@ require("packer").startup {
       -- Must include `nvim-texlabconfig` in path
       run = "go build -o ~/.local/bin",
     }
+    use {
+      "klen/nvim-config-local",
+      config = function()
+        require("config-local").setup {}
+      end,
+    }
   end,
   config = {
     display = {
