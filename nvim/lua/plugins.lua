@@ -79,6 +79,7 @@ require("packer").startup {
         }
       end,
     }
+    use "nvim-treesitter/playground"
     use {
       -- Auto pairs
       "windwp/nvim-autopairs",
