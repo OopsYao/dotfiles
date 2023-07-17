@@ -10,5 +10,6 @@
 	defaultBranch = main
 [core]
 	quotepath = false # Show unusual characters in file path
+	autocrlf = input
 [commit]
 	verbose = true
