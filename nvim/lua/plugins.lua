@@ -145,20 +145,50 @@ require("packer").startup {
       end,
     }
     use "psliwka/vim-smoothie" -- Smooth scrolling
+    use "kyazdani42/nvim-web-devicons"
     use {
-      "romgrk/barbar.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      "nvim-lualine/lualine.nvim",
+      requires = { "nvim-tree/nvim-web-devicons", opt = true },
       config = function()
-        local keymap = require("utils").keymap { noremap = true, silent = true }
-        keymap {
-          { "n", "<A-h>", ":BufferPrevious<CR>" },
-          { "t", "<A-h>", "<C-\\><C-n>:BufferPrevious<CR>" },
-          { "n", "<A-l>", ":BufferNext<CR>" },
-          { "t", "<A-l>", "<C-\\><C-n>:BufferNext<CR>" },
-          { "n", "<A-x>", ":BufferClose<CR>" },
-          { "t", "<A-x>", "<C-\\><C-n>:BufferClose<CR>" },
-          { "n", "<C-s>", ":BufferPick<CR>" }, -- Buffer-picking mode
-          { "t", "<C-s>", "<C-\\><C-n>:BufferPick<CR>" },
+        require("lualine").setup {
+          options = {
+            always_divide_middle = false,
+          },
+          sections = {
+            lualine_a = {},
+            lualine_c = {
+              {
+                "filename",
+                symbols = {
+                  modified = "●",
+                },
+              },
+            },
+          },
+          inactive_sections = {
+            lualine_c = {},
+            lualine_x = {},
+            lualine_a = {
+              {
+                "filetype",
+                icon_only = true,
+                separator = "",
+                padding = 0,
+                symbols = {
+                  modified = "●",
+                },
+              },
+            },
+            lualine_b = {
+              {
+                "filename",
+                path = 1,
+                symbols = {
+                  modified = "●",
+                },
+              },
+            },
+          },
         }
       end,
     }
