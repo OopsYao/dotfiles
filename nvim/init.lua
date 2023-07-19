@@ -52,9 +52,10 @@ keymap {
   -- Exit terminal mode
   { "t", "<C-\\>", "<C-\\><C-N>" },
   -- Nvim diagnostics
-  { "n", "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<CR>" },
-  { "n", "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
-  { "n", "<leader>dd", vim.diagnostic.open_float, { desc = "Display diagnostic info in float text" } },
+  { "n", "[d", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" } },
+  { "n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" } },
+  { "n", "<leader>do", vim.diagnostic.open_float, { desc = "Display diagnostic info in float text" } },
+  { "n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { desc = "Open diagnostics in Telescope" } },
 }
 
 -- Plugins
