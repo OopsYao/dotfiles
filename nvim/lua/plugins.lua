@@ -227,20 +227,22 @@ require("packer").startup {
         "nvim-telescope/telescope-file-browser.nvim",
       },
       config = function()
-        local keymap = require("utils").keymap { noremap = true, silent = true }
-        keymap {
-          { "n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>" },
-          { "n", "<leader>fg", "<cmd>Telescope live_grep<cr>" },
-          { "n", "<leader>fb", "<cmd>Telescope buffers<cr>" },
-          { "n", "<leader>fh", "<cmd>Telescope help_tags<cr>" },
-          { "n", "<leader>fr", "<cmd>Telescope file_browser<cr>" },
-        }
         require("telescope").setup {
           defaults = {
             file_ignore_patterns = { "%.git/" },
           },
         }
         require("telescope").load_extension "file_browser"
+        local buildin = require "telescope.builtin"
+        local keymap = vim.keymap.set
+        keymap("n", "<leader>ff", function()
+          buildin.find_files { hidden = true }
+        end, { desc = "Find files" })
+        keymap("n", "<leader>fg", buildin.live_grep, { desc = "Live grep" })
+        keymap("n", "<leader>fb", buildin.buffers, { desc = "Buffers" })
+        keymap("n", "<leader>fr", require("telescope").extensions.file_browser.file_browser, { desc = "File browser" })
+        keymap("n", "<leader>fs", buildin.git_status, { desc = "Git status" })
+        keymap("n", "<leader>dd", buildin.diagnostics, { desc = "Open diagnostics in Telescope" })
       end,
     }
     use {
