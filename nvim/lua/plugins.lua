@@ -76,6 +76,10 @@ require("packer").startup {
           highlight = {
             enable = true,
           },
+          indent = {
+            -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1573
+            disable = { "python" },
+          },
         }
       end,
     }
