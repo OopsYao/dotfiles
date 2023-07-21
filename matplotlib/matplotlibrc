@@ -1,0 +1,27 @@
+# Doc https://matplotlib.org/stable/tutorials/introductory/customizing.html
+
+# For all avaviable fonts, see matplotlib.font_manager.get_font_names(),
+# or see something like ~/.cache/matplotlib/fontList.json
+
+# Only Noto Serif/Sans CJK JP (not SC) can be found
+# with Arch package extra/noto-fonts-cjk installed,
+# the reason is unclear.
+font.sans-serif: Helvetica, TeX Gyre Heros, Noto Serif CJK SC, Source Han Sans CN
+font.serif: TeX Gyre Pagella, Georgia, Noto Serif CJK SC, Source Han Serif CN
+
+font.family: sans-serif
+mathtext.fontset: stixsans
+
+text.color: C0
+axes.labelcolor: C0
+axes.edgecolor: C0
+xtick.color: C0
+ytick.color: C0
+
+lines.linewidth: 0.8
+axes.prop_cycle: cycler('color', ['k', 'r', 'g', 'b', 'y', 'm', 'c', 'ff7f0e', '9467bd', '8c564b'])
+
+figure.figsize: 5.76, 4
+savefig.format: pdf
+savefig.bbox: tight
+savefig.pad_inches: 0
