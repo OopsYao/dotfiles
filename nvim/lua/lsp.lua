@@ -65,6 +65,34 @@ nvim_lsp.yamlls.setup {
 }
 
 -- LaTeX
+local forwardSearch = function(executable)
+  local args = {}
+  if executable == "zathura" then
+    args = {
+      "--synctex-editor-command",
+      [[nvim-texlabconfig -file '%%%{input}' -line %%%{line} -server ]] .. vim.v.servername,
+      "--synctex-forward",
+      "%l:1:%f",
+      "%p",
+    }
+  elseif executable == "sioyek" then
+    args = {
+      "--reuse-window",
+      "--inverse-search",
+      [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
+      "--forward-search-file",
+      "%f",
+      "--forward-search-line",
+      "%l",
+      "%p",
+    }
+  end
+  return {
+    executable = executable,
+    args = args,
+  }
+end
+
 require("lspconfig").texlab.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -84,19 +112,7 @@ require("lspconfig").texlab.setup {
         onEdit = true,
         onOpenAndSave = true,
       },
-      forwardSearch = {
-        executable = "sioyek",
-        args = {
-          "--reuse-window",
-          "--inverse-search",
-          [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
-          "--forward-search-file",
-          "%f",
-          "--forward-search-line",
-          "%l",
-          "%p",
-        },
-      },
+      forwardSearch = forwardSearch "zathura",
     },
   },
 }
