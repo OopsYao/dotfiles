@@ -77,7 +77,6 @@ local forwardSearch = function(executable)
     }
   elseif executable == "sioyek" then
     args = {
-      "--reuse-window",
       "--inverse-search",
       [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
       "--forward-search-file",
@@ -112,7 +111,7 @@ require("lspconfig").texlab.setup {
         onEdit = true,
         onOpenAndSave = true,
       },
-      forwardSearch = forwardSearch "zathura",
+      forwardSearch = forwardSearch "sioyek",
     },
   },
 }
