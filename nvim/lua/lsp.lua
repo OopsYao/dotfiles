@@ -21,7 +21,9 @@ local on_attach = function(client, bufnr)
         -- The callback takes an argument,
         -- so setting callback = vim.lsp.buf.format will not work.
         -- :h lua-guide-autocommands-create
-        vim.lsp.buf.format()
+        vim.lsp.buf.format {
+          timeout_ms = 5000,
+        }
       end,
       buffer = bufnr,
     })
