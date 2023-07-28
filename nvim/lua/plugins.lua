@@ -21,7 +21,6 @@ require("packer").startup {
     }
     use {
       "L3MON4D3/LuaSnip",
-      tag = "v<CurrentMajor>.*",
       config = function()
         require "snippets"
       end,
@@ -231,12 +230,14 @@ require("packer").startup {
         "nvim-telescope/telescope-file-browser.nvim",
       },
       config = function()
-        require("telescope").setup {
+        local telescope = require "telescope"
+        telescope.setup {
           defaults = {
             file_ignore_patterns = { "%.git/" },
           },
         }
-        require("telescope").load_extension "file_browser"
+        telescope.load_extension "file_browser"
+        telescope.load_extension "notify"
         local buildin = require "telescope.builtin"
         local keymap = vim.keymap.set
         keymap("n", "<leader>ff", function()
@@ -244,9 +245,13 @@ require("packer").startup {
         end, { desc = "Find files" })
         keymap("n", "<leader>fg", buildin.live_grep, { desc = "Live grep" })
         keymap("n", "<leader>fb", buildin.buffers, { desc = "Buffers" })
-        keymap("n", "<leader>fr", require("telescope").extensions.file_browser.file_browser, { desc = "File browser" })
+        keymap("n", "<leader>fr", telescope.extensions.file_browser.file_browser, { desc = "File browser" })
         keymap("n", "<leader>fs", buildin.git_status, { desc = "Git status" })
         keymap("n", "<leader>dd", buildin.diagnostics, { desc = "Open diagnostics in Telescope" })
+        keymap("n", "<leader>pp", function()
+          buildin.builtin { include_extensions = true }
+        end, { desc = "Show Telescope builtins" })
+        keymap("n", "<leader>nt", telescope.extensions.notify.notify, { desc = "Show notifications" })
       end,
     }
     use {
@@ -270,6 +275,12 @@ require("packer").startup {
       -- Build nvim-texlabconfig executable to plugin dir by default
       -- Must include `nvim-texlabconfig` in path
       run = "go build -o ~/.local/bin",
+    }
+    use {
+      "rcarriga/nvim-notify",
+      config = function()
+        vim.notify = require "notify"
+      end,
     }
     use {
       "klen/nvim-config-local",
