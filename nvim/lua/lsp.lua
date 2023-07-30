@@ -1,20 +1,57 @@
 -- LSP
 -- for lspconfig doc see `:h lspconfig`
 
--- If global variable `disable_latex_format` exists,
--- then set `disable_format` variable for tex buffers.
--- Should goes before other LspAttach autocommands
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("Disable LaTeX formatting", {}),
-  pattern = { "*.tex" },
-  callback = function(ev)
-    if vim.g.disable_latex_format then
-      vim.api.nvim_buf_set_var(ev.buf, "disable_format", true)
-    end
-  end,
-})
-
 local aug_formatting = vim.api.nvim_create_augroup("LspFormatting", {})
+local function setup_formatting(client, bufnr, blacklist)
+  local function format_func(async)
+    return function()
+      vim.lsp.buf.format {
+        buffer = bufnr,
+        async = async,
+        timeout_ms = 5000,
+        filter = function(c)
+          for _, n in ipairs(blacklist) do
+            if n == c.name then
+              return false
+            end
+          end
+          return true
+        end,
+      }
+    end
+  end
+  local function setup_formatting_keymap(m)
+    vim.keymap.set(m, "<leader>fm", format_func(true), { silent = true, desc = "Format code (async)", buffer = bufnr })
+  end
+
+  for _, cn in ipairs(blacklist) do
+    if cn == client.name then
+      return
+    end
+  end
+
+  if client.supports_method "textDocument/rangeFormatting" then
+    setup_formatting_keymap "v"
+  end
+
+  -- Formatting on save and hotkey
+  if client.supports_method "textDocument/formatting" then
+    for _, ft in ipairs(vim.g.disable_formatting_types or {}) do
+      if ft == vim.bo.filetype then
+        return
+      end
+    end
+
+    setup_formatting_keymap "n"
+    vim.api.nvim_clear_autocmds { group = aug_formatting, buffer = bufnr }
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = aug_formatting,
+      buffer = bufnr,
+      callback = format_func(false),
+    })
+  end
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(args)
@@ -36,33 +73,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- Formatting
-    local function setup_formatting_keymap(m)
-      vim.keymap.set(m, "<leader>fm", function()
-        vim.lsp.buf.format { async = true, buffer = bufnr }
-      end, { silent = true, desc = "Format code (async)", buffer = bufnr })
-    end
-    if client.supports_method "textDocument/rangeFormatting" then
-      setup_formatting_keymap "v"
-    end
-    if client.supports_method "textDocument/formatting" then
-      -- Check if buffer variable disable_format exists
-      local status, formatting_disabled = pcall(function()
-        return vim.api.nvim_buf_get_var(bufnr, "disable_format")
-      end)
-      formatting_disabled = formatting_disabled and status
-      if not formatting_disabled then
-        setup_formatting_keymap "n"
-        -- Formatting on save
-        vim.api.nvim_clear_autocmds { group = aug_formatting, buffer = bufnr }
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = aug_formatting,
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format { timeout_ms = 5000 }
-          end,
-        })
-      end
-    end
+    -- Texlab rewrites buffer with extra endline on every formatting, not sure why
+    setup_formatting(client, bufnr, { "texlab" })
   end,
 })
 
