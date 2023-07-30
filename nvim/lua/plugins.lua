@@ -283,6 +283,9 @@ require("packer").startup {
       end,
     }
     use {
+      "barreiroleo/ltex_extra.nvim",
+    }
+    use {
       "klen/nvim-config-local",
       config = function()
         require("config-local").setup {}

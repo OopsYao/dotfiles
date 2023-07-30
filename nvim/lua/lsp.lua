@@ -195,3 +195,22 @@ nvim_lsp.lua_ls.setup {
     },
   },
 }
+
+nvim_lsp.ltex.setup {
+  on_attach = function()
+    require("ltex_extra").setup {
+      -- Default dictionary to be loaded issue
+      -- https://github.com/barreiroleo/ltex_extra.nvim/issues/43#issue-1815257892
+      load_langs = { "en-US", "zh-CN" },
+    }
+  end,
+  settings = {
+    ltex = {
+      latex = {
+        environments = {
+          empheq = "ignore",
+        },
+      },
+    },
+  },
+}
