@@ -52,6 +52,24 @@ local function setup_formatting(client, bufnr, blacklist)
   end
 end
 
+local function on_demand_setting(name)
+  local disable_tex_lint = vim.tbl_contains(vim.g.disable_lint_types or {}, "tex")
+  local settings = {
+    ltex = {
+      language = vim.g.my_ltex_language or "en-US",
+    },
+    texlab = {
+      chktex = {
+        onEdit = not disable_tex_lint,
+        onOpenAndSave = not disable_tex_lint,
+      },
+    },
+  }
+  if settings[name] then
+    return { [name] = settings[name] }
+  end
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(args)
@@ -75,6 +93,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Formatting
     -- Texlab rewrites buffer with extra endline on every formatting, not sure why
     setup_formatting(client, bufnr, { "texlab" })
+
+    -- On-demand setting
+    local settings = on_demand_setting(client.name)
+    if settings ~= nil then
+      -- Seems like that notification `workspace/didChangeConfiguration` doesnot work,
+      -- while reassigning settings does the job.
+      -- https://github.com/neovim/nvim-lspconfig/wiki/Project-local-settings#configure-in-your-personal-settings-initlua
+      client.config.settings = vim.tbl_deep_extend("force", client.config.settings, settings)
+    end
   end,
 })
 
