@@ -14,6 +14,14 @@ require("packer").startup {
       end,
     }
     use {
+      "glepnir/dashboard-nvim",
+      event = "VimEnter",
+      config = function()
+        require("dashboard").setup {}
+      end,
+      requires = { "nvim-tree/nvim-web-devicons" },
+    }
+    use {
       "neovim/nvim-lspconfig",
       config = function()
         require "lsp"
@@ -204,7 +212,7 @@ require("packer").startup {
           use_treesitter = true,
           show_current_context = true,
           buftype_exclude = { "terminal" },
-          filetype_exclude = { "help" },
+          filetype_exclude = { "help", "dashboard" },
         }
       end,
     } -- Indent lines
