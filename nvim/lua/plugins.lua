@@ -162,6 +162,7 @@ require("packer").startup {
             lualine_c = {
               {
                 "filename",
+                path = 1,
                 symbols = {
                   modified = "●",
                 },
@@ -284,6 +285,23 @@ require("packer").startup {
     }
     use {
       "barreiroleo/ltex_extra.nvim",
+    }
+    use {
+      "romgrk/barbar.nvim",
+      requires = {
+        "lewis6991/gitsigns.nvim",
+        "nvim-tree/nvim-web-devicons",
+      },
+      config = function()
+        local function keymap(m, key, func, opts)
+          vim.keymap.set(m, key, func, vim.tbl_extend("force", { silent = true }, opts))
+        end
+        keymap("n", "<A-h>", ":BufferPrevious<CR>", { desc = "Previous buffer" })
+        keymap("n", "<A-l>", ":BufferNext<CR>", { desc = "Next buffer" })
+        keymap("n", "<A-,>", ":BufferMovePrevious<CR>", { desc = "Move buffer to previous" })
+        keymap("n", "<A-.>", ":BufferMoveNext<CR>", { desc = "Move buffer to next" })
+        keymap("n", "<A-x>", ":BufferClose<CR>", { desc = "Close buffer" })
+      end,
     }
     use {
       "klen/nvim-config-local",
