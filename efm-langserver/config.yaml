@@ -19,7 +19,7 @@ languages:
     - format-command: shfmt -i 2 -ci -s -bn
       format-stdin: true
   tex:
-    - format-command: latexindent
+    - format-command: latexindent $(echo ${--useless:rowStart} ${--useless:rowEnd} | xargs -n4 -r sh -c 'echo --lines $(($1+1))-$(($3+1))')
       format-stdin: true
   bib:
     - format-command: bibtex-tidy --curly --sort --sort-fields --trailing-commas --wrap --drop-all-caps -

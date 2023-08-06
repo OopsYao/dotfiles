@@ -123,7 +123,7 @@ nvim_lsp.pylsp.setup {
 }
 
 nvim_lsp.efm.setup {
-  init_options = { documentFormatting = true },
+  init_options = { documentFormatting = true, documentRangeFormatting = true },
   capabilities = capabilities,
 }
 
