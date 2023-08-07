@@ -26,6 +26,10 @@ super + d
 super + Return
     alacritty --working-directory "$(xcwd)"
 
+# File manager
+super + e
+    alacritty -e ranger "$(xcwd)"
+
 # Powermenu
 super + p
     powermenu.py
