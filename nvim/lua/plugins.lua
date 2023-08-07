@@ -312,6 +312,12 @@ require("packer").startup {
       end,
     }
     use {
+      "Bekaboo/deadcolumn.nvim",
+      config = function()
+        vim.wo.colorcolumn = "80"
+      end,
+    }
+    use {
       "klen/nvim-config-local",
       config = function()
         require("config-local").setup {}
