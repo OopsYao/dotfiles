@@ -4,8 +4,6 @@ xset -b
 # Chromium auto proxy detect
 export auto_proxy
 
-feh --bg-fill "$HOME/Pictures/wallpapers/wallpaper"
-
 # proxy
 ~/gnome_proxy.py
 export http_proxy="http://localhost:7890"

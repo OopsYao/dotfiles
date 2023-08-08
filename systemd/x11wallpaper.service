@@ -1,0 +1,11 @@
+[Unit]
+Description=Set X11 wallpaper
+PartOf=xsession.target
+After=xsession.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --bg-fill /home/oopsy/Pictures/wallpapers/wallpaper
+
+[Install]
+WantedBy=xsession.target
