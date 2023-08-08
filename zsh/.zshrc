@@ -21,8 +21,15 @@ alias unfuckgit="git config --global --unset http.proxy \
     && git config --global --unset https.proxy"
 fuckgfw
 
-# See https://askubuntu.com/questions/383462/unable-to-paste-with-xclip-outside-of-terminal
-alias clip="xclip -selection clipboard"
+# X11: https://askubuntu.com/a/383473
+# Wayland: https://superuser.com/a/1377550
+clip() {
+  if [[ "$XDG_SESSION_TYPE" = "wayland" ]]; then
+    wl-copy
+  else
+    xclip -selection clipboard
+  fi
+}
 
 mkfile() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
 alias e="nvim"
