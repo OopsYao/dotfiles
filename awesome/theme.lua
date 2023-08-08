@@ -2,13 +2,13 @@
 local gears = require "gears"
 
 -- Define the image to load
-my_theme = gears.filesystem.get_configuration_dir() .. "/icons/"
+local my_theme = gears.filesystem.get_configuration_dir() .. "/icons/"
 local theme = {}
 local xresources = require "beautiful.xresources"
 local dpi = xresources.apply_dpi
 
 theme.useless_gap = dpi(4)
-theme.master_width_factor = 0.75
+theme.master_width_factor = 0.9
 
 theme.bg_normal = "#eeeeee"
 theme.bg_focus = "#2c3e67"
@@ -47,5 +47,8 @@ theme.titlebar_maximized_button_focus_active = my_theme .. "floating.png"
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+-- Required by hotkeys_popup
+theme.hotkeys_border_width = dpi(2)
 
 return theme

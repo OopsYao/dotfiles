@@ -3,11 +3,12 @@ local xresources = require "beautiful.xresources"
 local wibox = require "wibox"
 local gears = require "gears"
 local tags = require "tags"
+local naughty = require "naughty"
 
 local dpi = xresources.apply_dpi
 awful.screen.connect_for_each_screen(function(s)
   local selected = true -- Set the first tag as selected
-  for k, v in pairs(tags) do
+  for _, v in pairs(tags) do
     awful.tag.add(v[1], { layout = v[2], screen = s, master_count = 3, selected = selected, column_count = 1 })
     selected = false
   end
@@ -29,7 +30,7 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- On startup
-awesome.connect_signal("startup", function(args)
+awesome.connect_signal("startup", function()
   awful.util.spawn "systemctl --user start xsession.target"
 end)
 

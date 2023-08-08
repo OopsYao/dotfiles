@@ -28,18 +28,8 @@ local navi_by_direction = function(direction)
   end
 end
 
-local hotkey = function(awful_func)
-  return function(t)
-    keys = t[1]
-    func = t[2]
-    meta = t[3]
-    return awful_func({ table.unpack(keys, 1, #keys - 1) }, keys[#keys], func, meta)
-  end
-end
-local button = hotkey(awful.button)
-
-local globalkeys = gears.table.map(function(hotkey)
-  local shortcut, operation, meta = table.unpack(hotkey)
+local globalkeys = gears.table.map(function(hk)
+  local shortcut, operation, meta = table.unpack(hk)
   return awful.key({ table.unpack(shortcut, 1, #shortcut - 1) }, shortcut[#shortcut], operation, meta)
 end, {
   {

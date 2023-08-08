@@ -20,7 +20,7 @@ awful.screen.connect_for_each_screen(function(s)
           widget = wibox.widget.imagebox,
           image = gears.color.recolor_image(beautiful.wibar_icon, beautiful.wibar_icon_color),
         },
-        require "wgt.xwindow" {},
+        require "wgt.xwindow"(),
       },
     },
     {
@@ -38,13 +38,13 @@ awful.screen.connect_for_each_screen(function(s)
         {
           layout = wibox.layout.fixed.horizontal,
           spacing = dpi(8),
-          require "wgt.clientnum" {},
+          require "wgt.clientnum"(),
           -- require 'awesome-wm-widgets.github-activity-widget.github-activity-widget' {
           --     username = 'OopsYao'
           -- },
           require "battery-widget" {
-            ac_prefix = " ",
-            battery_prefix = " ",
+            ac_prefix = " ",
+            battery_prefix = " ",
             widget_font = "Ubuntu Mono 9",
           },
           -- require 'net_widgets'.wireless {interface = 'wlan0'},

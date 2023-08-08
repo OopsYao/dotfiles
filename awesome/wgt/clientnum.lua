@@ -9,7 +9,6 @@ local counter = function()
   local ctr = {}
   function ctr:inc()
     c = c + 1
-    return
   end
   function ctr:value()
     return c
@@ -19,17 +18,17 @@ end
 
 -- Get minimized and all client numbers in current tag
 local get_clients_number = function()
-  local t = awful.screen.focused().selected_tag
-  local screen = awful.screen.focused()
-  local tag = screen.selected_tag
-  local clients = tag:clients()
-  local counter_minimized = counter {}
-  for _, client in pairs(clients) do
-    if client.minimized then
-      counter_minimized.inc()
+  local tag = awful.tag.selected(1)
+  if tag ~= nil then
+    local clients = tag:clients()
+    local counter_minimized = counter()
+    for _, client in pairs(clients) do
+      if client.minimized then
+        counter_minimized:inc()
+      end
     end
+    return { all = #clients, minimized = counter_minimized:value() }
   end
-  return { all = #clients, minimized = counter_minimized.value() }
 end
 
 -- Widget button for restoring one or all clients (of current tag)
@@ -58,6 +57,9 @@ return function()
   }
   local update = function()
     local num = get_clients_number()
+    if num == nil then
+      return
+    end
     if num.minimized == 0 then
       clientnum.text = ""
     else

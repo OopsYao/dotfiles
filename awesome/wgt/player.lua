@@ -4,15 +4,14 @@ local wibox = require "wibox"
 local awful = require "awful"
 local gears = require "gears"
 local xresources = require "beautiful.xresources"
-local base = require "wibox.widget.base"
 
 local sep = "\t"
 local playerctl_format = table.concat({ "{{artist}}", "{{title}}", "{{mpris:artUrl}}" }, sep)
 local parse_playerctl_output = function(output)
   output = gears.string.split(output, sep)
-  artist = output[1]
-  title = output[2]
-  cover = output[3]
+  local artist = output[1]
+  local title = output[2]
+  local cover = output[3]
   return { artist = artist, title = title, cover = cover }
 end
 
@@ -31,7 +30,7 @@ local url2local = function(url, callback)
   -- Download the image
   local cover_name = url:match "[^/]+$"
   local file_path = "/tmp/awesomewm-player-cover-" .. cover_name
-  awful.spawn.easy_async("curl -s -L -o " .. file_path .. " " .. url, function(stdout, stderr, reason, exit_code)
+  awful.spawn.easy_async("curl -s -L -o " .. file_path .. " " .. url, function(_, _, _, exit_code)
     if exit_code == 0 then
       callback(file_path)
     end

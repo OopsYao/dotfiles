@@ -196,6 +196,9 @@ nvim_lsp.texlab.setup {
 }
 
 -- Lua
+local pwd = vim.fn.getcwd()
+local global_awesomewm = pwd:match "%.dotfiles$" and { "awesome", "client", "root", "screen" } or {}
+
 nvim_lsp.lua_ls.setup {
   capabilities = capabilities,
   settings = {
@@ -205,7 +208,7 @@ nvim_lsp.lua_ls.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
+        globals = vim.tbl_extend("force", { "vim" }, global_awesomewm),
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

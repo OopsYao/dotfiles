@@ -43,7 +43,7 @@ end, {
   "chrome.svg",
   "neovim.svg",
 })
-local update_tags = function(self, tag, init)
+local update_tags = function(self, tag, _)
   local color = beautiful.fg_normal
 
   local container_role = self:get_children_by_id("container_role")[1]
@@ -92,10 +92,10 @@ return function(params)
           },
         },
       },
-      create_callback = function(self, tag, index, tags)
+      create_callback = function(self, tag, _, _)
         update_tags(self, tag)
       end,
-      update_callback = function(self, tag, index, tags)
+      update_callback = function(self, tag, _, _)
         update_tags(self, tag)
       end,
     },
