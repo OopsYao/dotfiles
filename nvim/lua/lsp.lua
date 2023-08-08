@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Note that `client.supports_method` always return `true` for unknown capabilities.
     -- https://github.com/neovim/neovim/issues/18686#issuecomment-1133804806
     if client.supports_method "textDocument/codeAction" then
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
+      vim.keymap.set({ "n", "v" }, "<leader>ac", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code action" })
     end
     if client.supports_method "textDocument/rename" then
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "Rename" })

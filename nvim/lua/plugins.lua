@@ -148,8 +148,8 @@ require("packer").startup {
             map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Gitsigns undo stage hunk" })
             map("n", "<leader>hS", gs.stage_buffer, { desc = "Gitsigns stage buffer" })
             map("n", "<leader>hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
-            map("n", "]h", gs.next_hunk, { desc = "Gitsigns next hunk" })
-            map("n", "[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
+            map("n", "]c", gs.next_hunk, { desc = "Gitsigns next hunk" })
+            map("n", "[c", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
             map("n", "<leader>hd", gs.diffthis, { desc = "Gitsigns diff this" })
           end,
         }
@@ -316,6 +316,10 @@ require("packer").startup {
       config = function()
         vim.wo.colorcolumn = "80"
       end,
+    }
+    use {
+      "sindrets/diffview.nvim",
+      requires = { "nvim-tree/nvim-web-devicons" },
     }
     use {
       "klen/nvim-config-local",
