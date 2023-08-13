@@ -94,12 +94,15 @@ require("packer").startup {
               end
             end),
           },
+          formatting = {
+            format = require("lspkind").cmp_format {},
+          },
         }
         -- Seems like that nvim-cmp doesnot support mapping in normal mode
         vim.keymap.set("n", "<Tab>", super_tab)
       end,
       -- cmp-nvim-lsp provides the LSP source
-      requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip" },
+      requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip", "onsails/lspkind.nvim" },
     } -- Auto completion
     use {
       "nvim-treesitter/nvim-treesitter",
