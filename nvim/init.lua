@@ -32,8 +32,8 @@ seto {
   -- Use gui colors
   termguicolors = true,
 
-  -- Hide tilde
-  fillchars = "eob: ",
+  -- Hide tilde and set fold line char and diff char
+  fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:,diff:╱]],
 
   -- Alaways show sign column
   signcolumn = "yes",
@@ -62,3 +62,21 @@ require "plugins"
 
 -- Disable line number in terminal mode
 vim.cmd "au TermOpen * setlocal nonumber norelativenumber"
+
+-- Custom diagnostic UI
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+-- Gitgutter and LSP both use signcolumn,
+-- hence use numhl for LSP when there is gitgutter
+local signs = { Error = " ", Warn = " ", Info = " ", Hint = " " }
+local gitgutter = true
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, gitgutter and { numhl = hl } or { text = icon, texthl = hl })
+end
+vim.diagnostic.config {
+  virtual_text = {
+    -- Can be a function in future release
+    -- https://github.com/neovim/neovim/pull/22965
+    prefix = "●",
+  },
+}

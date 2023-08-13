@@ -156,10 +156,6 @@ require("packer").startup {
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("gitsigns").setup {
-          -- Due to the limitation of nvim, there is no perfect way
-          -- to display gitsigns and dignostic marks at the same time,
-          -- hence display gitsigns only if both activated.
-          sign_priority = 100,
           current_line_blame = true,
           on_attach = function(bufnr)
             local gs = package.loaded.gitsigns
@@ -174,8 +170,20 @@ require("packer").startup {
             map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Gitsigns undo stage hunk" })
             map("n", "<leader>hS", gs.stage_buffer, { desc = "Gitsigns stage buffer" })
             map("n", "<leader>hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
-            map("n", "]h", gs.next_hunk, { desc = "Gitsigns next hunk" })
-            map("n", "[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
+            map("n", "]c", function()
+              if vim.wo.diff then
+                return "]c"
+              end
+              vim.schedule(gs.next_hunk)
+              return "<Ignore>"
+            end, { desc = "Gitsigns next hunk", expr = true })
+            map("n", "[c", function()
+              if vim.wo.diff then
+                return "[c"
+              end
+              vim.schedule(gs.prev_hunk)
+              return "<Ignore>"
+            end, { desc = "Gitsigns previous hunk", expr = true })
             map("n", "<leader>hd", gs.diffthis, { desc = "Gitsigns diff this" })
           end,
         }
@@ -238,7 +246,7 @@ require("packer").startup {
           use_treesitter = true,
           show_current_context = true,
           buftype_exclude = { "terminal" },
-          filetype_exclude = { "help", "dashboard" },
+          filetype_exclude = { "help", "dashboard", "packer" },
         }
       end,
     } -- Indent lines
@@ -346,6 +354,25 @@ require("packer").startup {
     use {
       "sindrets/diffview.nvim",
       requires = { "nvim-tree/nvim-web-devicons" },
+      config = function()
+        require("diffview").setup {
+          view = {
+            default = {
+              layout = "diff2_horizontal",
+              winbar_info = true,
+            },
+          },
+          hooks = {
+            -- Disable gitsigns sign highlight
+            view_enter = function()
+              require("gitsigns").toggle_signs(false)
+            end,
+            view_leave = function()
+              require("gitsigns").toggle_signs(true)
+            end,
+          },
+        }
+      end,
     }
     use {
       "klen/nvim-config-local",
