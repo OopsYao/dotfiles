@@ -172,13 +172,10 @@ end
 
 nvim_lsp.texlab.setup {
   capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    -- Disable formatting, use efm instead
-    -- Texlab rewrites buffer even without changes, still not sure why
-    client.server_capabilities.documentFormattingProvider = false
+  on_attach = function(_, bufnr)
     vim.keymap.set(
-      "n",
-      "<leader>s",
+      { "n", "i" },
+      "<c-s>",
       "<cmd>TexlabForward<cr>",
       { buffer = bufnr, silent = true, desc = "SyncTeX forward search" }
     )
@@ -193,7 +190,7 @@ nvim_lsp.texlab.setup {
         onEdit = true,
         onOpenAndSave = true,
       },
-      forwardSearch = forwardSearch "sioyek",
+      forwardSearch = forwardSearch "zathura",
     },
   },
 }
