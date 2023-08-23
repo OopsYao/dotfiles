@@ -1,0 +1,91 @@
+* {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 14px;
+}
+
+
+window#waybar {
+  background: transparent;
+  color: white;
+  border: none;
+}
+
+window#waybar > box {
+    margin: 0px 0px 4px 0px;
+    background-color: rgba(32, 32, 32, 0.75);
+    /* https://github.com/Alexays/Waybar/issues/1296#issuecomment-1222166986 */
+    box-shadow: 0px 1px 2px 1px #21222c;
+}
+
+#workspaces button {
+  background: transparent;
+  color: white;
+  transition: background 0.3s ease;
+  /* The width may be assigned outside */
+  /* https://github.com/Alexays/Waybar/wiki/FAQ#workspace-buttons-are-too-wide-with-some-gtk-themes */
+  min-width: 30px;
+}
+
+/* Use .active for Hyprland
+ * https://github.com/Alexays/Waybar/wiki/Module:-Workspaces#style
+ * */
+#workspaces button.active {
+  background: #DBBADD;
+}
+
+#custom-logo,
+#workspace button,
+#window,
+#submap,
+#network,
+#pulseaudio,
+#clock,
+#tray,
+#battery {
+  padding: 4px 5px;
+  padding-top: 8px;
+}
+
+#battery.charging {
+  color: white;
+  background-color: #26a65b;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+#battery.warning:not(.charging) {
+  background: #f53c3c;
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#submap {
+    background: purple;
+    color: white;
+}
+
+#custom-logo {
+    color: #5e81ac;
+    font-weight: bold;
+}
+
+#clock {
+    font-family: Liberation Mono, monospaced;
+    font-weight: bold;
+}
+#battery, #pulseaudio {
+    font-family: Liberation Mono, monospaced;
+}

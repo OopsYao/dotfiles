@@ -1,0 +1,62 @@
+// vim: set ft=jsonc:
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 24, // Waybar height
+    "modules-left": ["custom/logo", "hyprland/submap", "hyprland/window"],
+    "modules-center": ["wlr/workspaces"],
+    "modules-right": ["tray", "battery", "pulseaudio", "clock"],
+    "hyprland/window": {},
+    "tray": {
+        "spacing": 5
+    },
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "sort-by-number": true,
+        "on-click": "activate",
+        "format-icons": {
+            "1": "󰎤",
+            "2": "󰎧",
+            "3": "󰎪",
+            "4": "󰎭",
+            "5": "󰎱",
+            "6": "󰎳",
+            "7": "󰎶",
+            "8": "󰎹",
+            "9": "󰎼",
+            "10": "󰎡",
+        },
+    },
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    },
+    "network": {
+        "format-ethernet": "󰍹",
+        "format-wifi": "󰖩",
+        "format-disconnected": "󰌙",
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
+    },
+    "hyprland/submap": {
+        "format": "󰩨",
+    },
+    "custom/logo":{
+        "format": "󰣇",
+    }
+}
