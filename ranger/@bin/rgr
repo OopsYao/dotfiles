@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    ranger --cmd="set preview_images_method kitty"
+else
+    ranger
+fi

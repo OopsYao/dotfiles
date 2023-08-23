@@ -41,7 +41,6 @@ alias please="sudo"
 # Fix issues on some remotes as then do not recognize alacritty
 alias ssh="TERM=xterm-256color ssh"
 alias lzd="lazydocker"
-alias rgr="ranger"
 
 if command -v thefuck &> /dev/null
 then
