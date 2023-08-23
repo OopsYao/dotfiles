@@ -66,8 +66,12 @@ require("packer").startup {
             { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
+            { name = "latex_symbols" },
+            { name = "emoji" },
+            { name = "nerdfont" },
           }, {
             { name = "buffer" },
+            { name = "async_path" },
           }),
           window = {
             completion = cmp.config.window.bordered(),
@@ -102,7 +106,18 @@ require("packer").startup {
         vim.keymap.set("n", "<Tab>", super_tab)
       end,
       -- cmp-nvim-lsp provides the LSP source
-      requires = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "saadparwaiz1/cmp_luasnip", "onsails/lspkind.nvim" },
+      requires = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
+        "saadparwaiz1/cmp_luasnip",
+        "onsails/lspkind.nvim",
+        "FelipeLema/cmp-async-path",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-omni",
+        "hrsh7th/cmp-emoji",
+        "chrisgrieser/cmp-nerdfont",
+        "kdheepak/cmp-latex-symbols",
+      },
     } -- Auto completion
     use {
       "nvim-treesitter/nvim-treesitter",
