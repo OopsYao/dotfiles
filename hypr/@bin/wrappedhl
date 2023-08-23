@@ -1,0 +1,3 @@
+#!/bin/sh
+
+Hyprland; systemctl --user stop wayland-session.target
