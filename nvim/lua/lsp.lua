@@ -114,9 +114,12 @@ local nvim_lsp = require "lspconfig"
 nvim_lsp.pylsp.setup {
   settings = {
     pylsp = {
-      -- Honor the flake8 config
-      -- https://github.com/python-lsp/python-lsp-server#configuration
-      configurationSources = { "flake8" },
+      plugins = {
+        ruff = {
+          enabled = true,
+          extendSelect = { "I" },
+        },
+      },
     },
   },
   capabilities = capabilities,
