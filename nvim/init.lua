@@ -43,12 +43,18 @@ seto {
 
   -- Disable showmode (mode message on the last line)
   showmode = false,
+
+  scrolloff = 15,
 }
 
 keymap {
   -- Clear highlight
   { "n", "<esc>", ":noh<CR><esc>" },
   { "n", "<leader>w", "<C-w>" },
+  { "n", "<C-h>", "<C-w>h" },
+  { "n", "<C-j>", "<C-w>j" },
+  { "n", "<C-k>", "<C-w>k" },
+  { "n", "<C-l>", "<C-w>l" },
   -- Exit terminal mode
   { "t", "<C-\\>", "<C-\\><C-N>" },
   -- Nvim diagnostics
