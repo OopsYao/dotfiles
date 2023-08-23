@@ -4,7 +4,11 @@ PartOf=wayland-session.target
 After=wayland-session.target
 
 [Service]
-ExecStart=/usr/bin/swww init --no-daemon
+# Or use oneshot type with RemainAfterExit option
+Type=forking
+ExecStart=/usr/bin/swww init
+ExecStartPost=/usr/bin/bash -c "${HOME}/.local/bin/random_wallpaper"
+ExecStop=/usr/bin/swww kill
 OOMScoreAdjust=-1000
 
 [Install]
