@@ -1,0 +1,12 @@
+[Unit]
+Description=My zettelkasten server
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/sh -c "cd ${HOME}/Projects/zettelkasten && npm run dev"
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=graphical-session.target
